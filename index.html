@@ -1,0 +1,923 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chef Evgenii Miami | Private Chef Meals Delivered</title>
+  <meta name="description" content="Private chef quality weekly meals for families and private homes in Miami by Chef Evgenii." />
+  <style>
+    :root {
+      --black: #080705;
+      --coal: #11100d;
+      --charcoal: #191712;
+      --panel: #211e17;
+      --gold: #c7a35a;
+      --gold-soft: #e4c982;
+      --cream: #f7efdf;
+      --muted: #b8ad99;
+      --line: rgba(228, 201, 130, .22);
+      --white: #ffffff;
+      --shadow: 0 22px 70px rgba(0, 0, 0, .35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--cream);
+      background: var(--black);
+      line-height: 1.55;
+    }
+
+    img { display: block; max-width: 100%; image-rendering: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px clamp(18px, 5vw, 70px);
+      background: rgba(8, 7, 5, .88);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+
+    .brand {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold-soft);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: var(--gold-soft); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 21px;
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      background: var(--gold);
+      color: #100d07;
+      font-weight: 800;
+      font-size: 14px;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      background: var(--gold-soft);
+      border-color: var(--gold-soft);
+    }
+
+    .button.ghost {
+      background: transparent;
+      color: var(--gold-soft);
+    }
+
+    .button.ghost:hover {
+      background: rgba(228, 201, 130, .08);
+    }
+
+    .hero {
+      min-height: calc(100vh - 82px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(340px, .78fr);
+      align-items: stretch;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(34px, 6vw, 74px) clamp(22px, 6vw, 84px);
+      background: radial-gradient(circle at 20% 0%, rgba(199, 163, 90, .16), transparent 34%), var(--black);
+    }
+
+    .eyebrow {
+      margin: 0 0 20px;
+      color: var(--gold-soft);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; margin: 0; font-weight: 700; }
+
+    h1 {
+      max-width: 850px;
+      font-size: clamp(38px, 5.4vw, 66px);
+      line-height: 1.02;
+    }
+
+    .lead {
+      max-width: 690px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2.1vw, 23px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      max-width: 740px;
+      margin-top: 44px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .stat {
+      min-height: 104px;
+      padding: 20px;
+      background: rgba(17, 16, 13, .94);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--gold-soft);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat span { color: var(--muted); font-size: 13px; }
+
+    .hero-media {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      background: var(--charcoal);
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.92) contrast(1.06);
+    }
+
+    .media-label {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      background: rgba(8, 7, 5, .72);
+      backdrop-filter: blur(12px);
+    }
+
+    .media-label b { display: block; color: var(--gold-soft); }
+    .media-label span { display: block; color: var(--muted); margin-top: 4px; font-size: 14px; }
+
+    section { padding: clamp(62px, 8vw, 110px) clamp(20px, 5vw, 70px); }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      font-size: clamp(34px, 4.8vw, 58px);
+      line-height: 1.04;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 18px 0 0;
+    }
+
+    .offer-grid, .plans, .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .tile, .plan, .step {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(33, 30, 23, .98), rgba(16, 15, 12, .98));
+      border-radius: 6px;
+      padding: 26px;
+      min-height: 240px;
+      box-shadow: var(--shadow);
+    }
+
+    .tile h3, .plan h3, .step h3 {
+      color: var(--gold-soft);
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .tile p, .plan p, .step p, .story p, .instagram-note p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .plan {
+      display: flex;
+      flex-direction: column;
+      min-height: 390px;
+    }
+
+    .price {
+      margin: 8px 0 16px;
+      color: var(--cream);
+      font-size: 30px;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    .plan ul {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 26px;
+      color: var(--muted);
+    }
+
+    .plan li {
+      padding: 9px 0;
+      border-top: 1px solid rgba(228, 201, 130, .14);
+    }
+
+    .plan .button { margin-top: auto; width: fit-content; }
+
+    .story-wrap {
+      display: grid;
+      grid-template-columns: minmax(320px, .8fr) minmax(0, 1fr);
+      gap: clamp(28px, 5vw, 72px);
+      align-items: center;
+    }
+
+    .story-photo {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .story-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .story p {
+      font-size: 18px;
+      margin-top: 18px;
+    }
+
+    .proofs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .proofs span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 12px;
+      color: var(--gold-soft);
+      background: rgba(199, 163, 90, .08);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .instagram-band {
+      background: #0d0c09;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .instagram-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 26px;
+    }
+
+    .instagram-note {
+      max-width: 430px;
+      border-left: 2px solid var(--gold);
+      padding-left: 18px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 5px;
+      border: 1px solid rgba(228, 201, 130, .18);
+      background: var(--panel);
+    }
+
+    .service-area {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .areas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .areas span {
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 12px 14px;
+      color: var(--cream);
+      background: rgba(255, 255, 255, .03);
+    }
+
+    .cta {
+      text-align: center;
+      background: radial-gradient(circle at 50% 0%, rgba(199, 163, 90, .18), transparent 34%), #0a0907;
+      border-top: 1px solid var(--line);
+    }
+
+    .cta h2 { max-width: 820px; margin: 0 auto; }
+    .cta p { max-width: 680px; margin: 18px auto 0; color: var(--muted); font-size: 18px; }
+    .cta .hero-actions { justify-content: center; }
+
+    footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px clamp(20px, 5vw, 70px);
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: var(--black);
+      font-size: 14px;
+    }
+
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 80;
+      width: 100%;
+      height: 3px;
+      transform-origin: left center;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, #8d6a2f, var(--gold-soft), #fff1b8);
+      box-shadow: 0 0 24px rgba(228, 201, 130, .5);
+      pointer-events: none;
+    }
+
+    .nav a.active:not(.button) { color: var(--gold-soft); }
+
+    .hero-copy > *, .media-label {
+      opacity: 0;
+      transform: translateY(22px);
+      animation: heroRise .85s cubic-bezier(.2, .8, .2, 1) forwards;
+    }
+
+    .hero-copy .eyebrow { animation-delay: .08s; }
+    .hero-copy h1 { animation-delay: .18s; }
+    .hero-copy .lead { animation-delay: .3s; }
+    .hero-actions { animation-delay: .42s; }
+    .hero-stats { animation-delay: .54s; }
+    .media-label { animation-delay: .68s; }
+
+    .hero-media img {`r`n      transform: scale(1.025);`r`n    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(46px);
+      transition: opacity .75s cubic-bezier(.2, .8, .2, 1), transform .75s cubic-bezier(.2, .8, .2, 1);
+      transition-delay: var(--delay, 0ms);
+      will-change: opacity, transform;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left { transform: translateX(-54px); }
+    .reveal-right { transform: translateX(54px); }
+    .reveal-left.is-visible, .reveal-right.is-visible { transform: translateX(0); }
+
+    .tile, .plan, .step, .areas span, .proofs span, .gallery img { will-change: transform, opacity; }
+    .tile, .plan, .step { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+
+    .tile:hover, .plan:hover, .step:hover {
+      transform: translateY(-6px);
+      border-color: rgba(228, 201, 130, .42);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, .45);
+    }
+
+    .gallery img {
+      transform: scale(1);
+      transition: transform .35s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.025);
+      border-color: rgba(228, 201, 130, .56);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, .48);
+    }
+
+    .story-photo img {`r`n      transform: scale(1.025);`r`n    }
+
+    section { position: relative; overflow: hidden; }
+
+    section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(228, 201, 130, .10), transparent 34%);
+      pointer-events: none;
+      transition: opacity .8s ease;
+    }
+
+    section.section-active::before { opacity: 1; }
+
+    @keyframes heroRise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .hero-media img, .story-photo img, .gallery img { transform: none; }
+    }
+
+    .luxury-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      padding: 0 clamp(20px, 5vw, 70px);
+      background: var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .luxury-signal {
+      min-height: 150px;
+      padding: 28px;
+      background: linear-gradient(135deg, rgba(24, 21, 15, .98), rgba(10, 9, 7, .98));
+    }
+
+    .luxury-signal span, .concierge-card span {
+      display: block;
+      color: var(--gold-soft);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .luxury-signal strong {
+      display: block;
+      max-width: 420px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 23px;
+      line-height: 1.18;
+      color: var(--cream);
+    }
+
+    .concierge-section { background: #0b0a08; }
+
+    .concierge-grid, .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .proof-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .concierge-card, .proof-card, .menu-board {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: linear-gradient(180deg, rgba(33, 30, 23, .98), rgba(12, 11, 9, .98));
+      box-shadow: var(--shadow);
+    }
+
+    .concierge-card, .proof-card {
+      min-height: 245px;
+      padding: 25px;
+    }
+
+    .concierge-card h3, .menu-column h3 {
+      color: var(--gold-soft);
+      font-size: 24px;
+      margin: 0 0 12px;
+    }
+
+    .concierge-card p, .menu-column p, .proof-card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .menu-section {
+      background: radial-gradient(circle at 72% 12%, rgba(228, 201, 130, .12), transparent 34%), var(--black);
+    }
+
+    .menu-board {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      overflow: hidden;
+    }
+
+    .menu-column {
+      padding: 30px;
+      border-right: 1px solid var(--line);
+      min-height: 260px;
+    }
+
+    .menu-column:last-child { border-right: 0; }
+    .proof-section { background: #0d0c09; }
+
+    .proof-card strong {
+      display: block;
+      color: var(--gold-soft);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 980px) {
+      .luxury-strip, .concierge-grid, .proof-grid, .menu-board { grid-template-columns: 1fr; }
+      .menu-column { border-right: 0; border-bottom: 1px solid var(--line); }
+      .menu-column:last-child { border-bottom: 0; }
+    }
+    @media (max-width: 980px) {
+      .hero, .story-wrap, .service-area { grid-template-columns: 1fr; }
+      .hero-media { min-height: 520px; order: -1; }
+      .offer-grid, .plans, .process-grid { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .instagram-head { display: block; }
+      .instagram-note { margin-top: 20px; }
+    }
+
+    @media (max-width: 680px) {
+      .nav { align-items: flex-start; }
+      .nav-links a:not(.button) { display: none; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .hero-media { min-height: 420px; }
+      .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tile, .plan, .step { min-height: auto; padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <nav class="nav">
+    <a class="brand" href="#top">Chef Evgenii Miami</a>
+    <div class="nav-links">
+      <a href="#service">Service</a>
+      <a href="#plans">Plans</a>
+      <a href="#story">Story</a>
+      <a href="#visuals">Food</a>
+      <a class="button" href="mailto:evgenii31599@gmail.com?subject=Private%20chef%20service%20in%20Miami&body=Hi%20Chef%20Evgenii%2C%20I%20am%20interested%20in%20weekly%20private%20chef%20meals.%20Please%20send%20me%20details.">Request Private Consultation</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Private chef meals for luxury homes in Miami</p>
+        <h1>Private Chef Meals for Luxury Homes in Miami.</h1>
+        <p class="lead">Weekly chef-prepared menus for families, executives, and private households who want restaurant-level food at home without planning, shopping, or last-minute dinner decisions.</p>
+        <div class="hero-actions">
+          <a class="button" href="mailto:evgenii31599@gmail.com?subject=Private%20chef%20service%20in%20Miami&body=Hi%20Chef%20Evgenii%2C%20I%20would%20like%20to%20discuss%20weekly%20meals%20for%20my%20home.">Request consultation</a>
+          <a class="button ghost" href="https://www.instagram.com/miami_cooking_chef/" target="_blank" rel="noreferrer">See chef profile</a>
+        </div>
+        <div class="hero-stats" aria-label="Chef credentials">
+          <div class="stat"><strong>15+</strong><span>years in professional kitchens and private service</span></div>
+          <div class="stat"><strong>Miami</strong><span>weekly private chef meals for luxury homes</span></div>
+          <div class="stat"><strong>Limited</strong><span>private weekly clients only, never mass meal prep</span></div>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="assets/chef-evgenii.jpg" alt="Chef Evgenii in chef jacket" />
+        <div class="media-label">
+          <b>Chef from Saint Petersburg, now cooking in Miami.</b>
+          <span>Weekly menus, premium ingredients, private household standards.</span>
+        </div>
+      </div>
+    </header>
+    <section class="luxury-strip" aria-label="Luxury service signals">
+      <div class="luxury-signal reveal">
+        <span>For private homes</span>
+        <strong>Designed for families, executives, founders, and seasonal Miami residents.</strong>
+      </div>
+      <div class="luxury-signal reveal">
+        <span>Chef-led</span>
+        <strong>Menu planning, sourcing, cooking, delivery rhythm, and feedback handled personally.</strong>
+      </div>
+      <div class="luxury-signal reveal">
+        <span>Limited availability</span>
+        <strong>A small number of weekly clients so quality stays controlled.</strong>
+      </div>
+    </section>
+    <section id="service">
+      <div class="section-head">
+        <p class="eyebrow">What I offer</p>
+        <h2>A concierge food service, not ordinary delivery.</h2>
+        <p>Your week is handled as a private chef system: menu planning, sourcing, preparation, packaging, delivery, feedback, and preference memory for your household.</p>
+      </div>
+      <div class="offer-grid">
+        <article class="tile">
+          <h3>Weekly menu design</h3>
+          <p>Balanced menus with variety, family preferences, clean proteins, sides, soups, salads, sauces, and special requests handled personally.</p>
+        </article>
+        <article class="tile">
+          <h3>Private chef quality</h3>
+          <p>Technique and discipline from luxury hotel kitchens, adapted to meals that travel well and still feel fresh at home.</p>
+        </article>
+        <article class="tile">
+          <h3>Premium delivery</h3>
+          <p>Prepared meals delivered to your home with clear portions, clean packaging, and a rhythm your household can rely on.</p>
+        </article>
+      </div>
+    </section>
+
+
+    <section id="concierge" class="concierge-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">Concierge private chef service</p>
+        <h2>Everything around food is handled before it becomes your problem.</h2>
+        <p>The value is not only the plate. It is the relief of knowing your household has a reliable weekly food rhythm, built by a chef who remembers preferences and keeps quality consistent.</p>
+      </div>
+      <div class="concierge-grid">
+        <article class="concierge-card reveal"><span>01</span><h3>Menu planning</h3><p>Weekly menus shaped around your family, schedule, diet, and level of variety.</p></article>
+        <article class="concierge-card reveal"><span>02</span><h3>Premium sourcing</h3><p>Ingredients selected for quality first: proteins, seafood, vegetables, sauces, and special requests.</p></article>
+        <article class="concierge-card reveal"><span>03</span><h3>Chef preparation</h3><p>Restaurant discipline adapted for meals that stay elegant, clean, and practical at home.</p></article>
+        <article class="concierge-card reveal"><span>04</span><h3>Household rhythm</h3><p>Delivery timing, packaging, portions, and feedback become part of a repeatable private service.</p></article>
+      </div>
+    </section>
+
+    <section id="menu" class="menu-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">Sample weekly direction</p>
+        <h2>Menus can move between clean family meals and luxury dinner energy.</h2>
+        <p>The final menu is private and customized, but the standard should feel premium, balanced, and personal.</p>
+      </div>
+      <div class="menu-board reveal">
+        <div class="menu-column"><h3>Premium proteins</h3><p>Lobster, scallops, salmon, branzino, beef tenderloin, lamb, duck, and chicken prepared cleanly and precisely.</p></div>
+        <div class="menu-column"><h3>Daily comfort</h3><p>Soups, salads, vegetables, grains, sauces, family-style sides, high-protein lunches, and reheatable dinners.</p></div>
+        <div class="menu-column"><h3>Private preferences</h3><p>Kids, allergies, low-carb, Mediterranean, wellness-focused, high-protein, celebratory dinners, and guest nights.</p></div>
+      </div>
+    </section>
+    <section id="plans">
+      <div class="section-head">
+        <p class="eyebrow">Weekly plans</p>
+        <h2>Choose the level of service your household needs.</h2>
+        <p>Every plan is adjusted after a short conversation. Prices are starting points because family size, menu complexity, ingredients, and delivery rhythm matter.</p>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <h3>Essential</h3>
+          <div class="price">From $950 / week</div>
+          <p>For a client who wants consistent, high-quality chef meals without a large custom menu.</p>
+          <ul>
+            <li>Weekly chef menu</li>
+            <li>Prepared meals and sides</li>
+            <li>Simple personalization</li>
+            <li>Miami delivery coordination</li>
+          </ul>
+          <a class="button ghost" href="mailto:evgenii31599@gmail.com?subject=Essential%20weekly%20chef%20plan">Ask about Essential</a>
+        </article>
+        <article class="plan">
+          <h3>Signature Family</h3>
+          <div class="price">From $1,450 / week</div>
+          <p>For a family that wants variety, comfort, clean food, and a more personal weekly structure.</p>
+          <ul>
+            <li>Custom family menu</li>
+            <li>Proteins, sides, salads, soups</li>
+            <li>Diet and preference planning</li>
+            <li>Priority weekly scheduling</li>
+          </ul>
+          <a class="button" href="mailto:evgenii31599@gmail.com?subject=Signature%20Family%20chef%20plan">Request Signature</a>
+        </article>
+        <article class="plan">
+          <h3>Deluxe</h3>
+          <div class="price">From $2,500 / week</div>
+          <p>For households that want a higher-touch chef relationship, premium ingredients, and deeper customization.</p>
+          <ul>
+            <li>Premium weekly menu</li>
+            <li>Luxury ingredients on request</li>
+            <li>Special events and guests</li>
+            <li>Concierge-style communication</li>
+          </ul>
+          <a class="button ghost" href="mailto:evgenii31599@gmail.com?subject=Deluxe%20private%20chef%20service">Discuss Deluxe</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="story-wrap">
+        <div class="story-photo">
+          <img src="assets/chef-evgenii.jpg" alt="Chef Evgenii portrait" />
+        </div>
+        <div class="story">
+          <p class="eyebrow">My story</p>
+          <h2>From Saint Petersburg luxury kitchens to private homes in Miami.</h2>
+          <p>My name is Evgenii. I started in professional kitchens in 2007 and built my career from the bottom up. In Saint Petersburg I worked in high-end hotels and restaurants, including Four Seasons, Marriott, Hampton, Hilton, and Kempinski-level environments.</p>
+          <p>In Miami, I work as a private family chef. That changed the way I think about food: it is not only about a beautiful plate. It is about trust, consistency, timing, family preferences, and making everyday life easier for people who expect a high standard.</p>
+          <div class="proofs">
+            <span>Chef from Saint Petersburg</span>
+            <span>Cooking in Miami</span>
+            <span>Private family chef</span>
+            <span>15+ years of experience</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visuals" class="instagram-band">
+      <div class="instagram-head">
+        <div class="section-head" style="margin-bottom:0">
+          <p class="eyebrow">Premium menu style</p>
+          <h2>Fine dining energy, adapted for private weekly service.</h2>
+        </div>
+        <div class="instagram-note">
+          <p>The visual standard should feel closer to a private luxury dinner than ordinary meal prep: precise plating, premium ingredients, dark surfaces, and warm gold atmosphere.</p>
+        </div>
+      </div>
+      <div class="gallery" aria-label="Instagram food gallery">
+        <img src="assets/luxury-food/luxury-lobster.png" alt="Luxury lobster plate with caviar and gold-rim porcelain" />
+        <img src="assets/luxury-food/luxury-beef.png" alt="Premium beef tenderloin plate on black ceramic" />
+        <img src="assets/luxury-food/luxury-scallops.png" alt="Seared scallops with caviar and fine dining garnish" />
+      </div>
+    </section>
+
+    <section>
+      <div class="service-area">
+        <div class="section-head" style="margin-bottom:0">
+          <p class="eyebrow">Service area</p>
+          <h2>Built for Miami households.</h2>
+          <p>Best fit: families, executives, founders, seasonal residents, and busy homes that want premium weekly food without managing restaurants, groceries, and last-minute decisions.</p>
+        </div>
+        <div class="areas">
+          <span>Miami Beach</span><span>Brickell</span><span>Coral Gables</span><span>Coconut Grove</span><span>Key Biscayne</span><span>Bal Harbour</span><span>Sunny Isles</span><span>Aventura</span><span>Private homes</span><span>Luxury condos</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Simple for the client. Serious behind the scenes.</h2>
+      </div>
+      <div class="process-grid">
+        <article class="step">
+          <h3>1. Conversation</h3>
+          <p>We define family size, preferences, allergies, food style, weekly rhythm, and the level of service that makes sense.</p>
+        </article>
+        <article class="step">
+          <h3>2. Menu</h3>
+          <p>I create a weekly menu built around quality, variety, reheating comfort, and the food your household actually wants to eat.</p>
+        </article>
+        <article class="step">
+          <h3>3. Delivery</h3>
+          <p>Meals are prepared, packed, and delivered with a repeatable weekly schedule, then refined based on feedback.</p>
+        </article>
+      </div>
+    </section>
+
+
+    <section id="proof" class="proof-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">Why private clients say yes</p>
+        <h2>Luxury clients buy trust before they buy food.</h2>
+        <p>The offer is built around the things that matter most inside a private home: consistency, discretion, quality, communication, and the feeling that dinner is already handled.</p>
+      </div>
+      <div class="proof-grid">
+        <article class="proof-card reveal"><strong>Consistency</strong><p>A weekly rhythm that reduces decision fatigue and keeps the household fed properly.</p></article>
+        <article class="proof-card reveal"><strong>Discretion</strong><p>Private service tone: clean communication, no drama, no mass-market delivery feeling.</p></article>
+        <article class="proof-card reveal"><strong>Personalization</strong><p>Preferences, dislikes, portions, allergies, and family habits become part of the service.</p></article>
+      </div>
+    </section>
+    <section class="cta">
+      <h2>Request a private consultation for your household.</h2>
+      <p>Share your household size, food preferences, location, and ideal weekly rhythm. I will suggest the service level that actually fits.</p>
+      <div class="hero-actions">
+        <a class="button" href="mailto:evgenii31599@gmail.com?subject=Private%20chef%20service%20in%20Miami&body=Hi%20Chef%20Evgenii%2C%20I%20am%20interested%20in%20weekly%20private%20chef%20meals.%0A%0AFamily%20size%3A%0AFood%20preferences%3A%0AIdeal%20delivery%20schedule%3A%0AService%20area%3A">Request Private Consultation</a>
+        <a class="button ghost" href="https://www.instagram.com/miami_cooking_chef/" target="_blank" rel="noreferrer">Open @miami_cooking_chef</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Chef Evgenii Miami</span>
+    <span>Private chef meals for Miami homes</span>
+    <a href="mailto:evgenii31599@gmail.com">evgenii31599@gmail.com</a>
+  </footer>
+  <script>
+    (() => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const progress = document.querySelector('.scroll-progress');
+      const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+      const sections = [...document.querySelectorAll('main > header, main > section')];
+      const revealTargets = [
+        ...document.querySelectorAll('section .section-head, .luxury-signal, .tile, .plan, .concierge-card, .menu-board, .story-photo, .story, .instagram-note, .gallery img, .areas span, .step, .proof-card, .cta h2, .cta p, .cta .hero-actions')
+      ];
+
+      revealTargets.forEach((el) => {
+        el.classList.add('reveal');
+        if (el.classList.contains('story-photo')) el.classList.add('reveal-left');
+        if (el.classList.contains('story')) el.classList.add('reveal-right');
+        const localIndex = [...(el.parentElement?.children || [])].indexOf(el);
+        el.style.setProperty('--delay', `${Math.max(0, localIndex) * 85}ms`);
+      });
+
+      if (!reduceMotion) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+        revealTargets.forEach((el) => revealObserver.observe(el));
+      } else {
+        revealTargets.forEach((el) => el.classList.add('is-visible'));
+      }
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('section-active', entry.isIntersecting);
+          if (!entry.isIntersecting) return;
+          const id = entry.target.id;
+          navLinks.forEach((link) => link.classList.toggle('active', id && link.getAttribute('href') === `#${id}`));
+        });
+      }, { threshold: 0.48 });
+      sections.forEach((section) => sectionObserver.observe(section));
+
+      let ticking = false;
+      const updateMotion = () => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.transform = `scaleX(${maxScroll > 0 ? scrollY / maxScroll : 0})`;
+        ticking = false;
+      };
+
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(updateMotion);
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      updateMotion();
+    })();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
