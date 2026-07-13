@@ -3,21 +3,83 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chef Evgenii Miami | Private Chef Meals</title>
-  <meta name="description" content="Personal chef in Miami offering custom weekly menus, restaurant-level meals, and three deliveries per week for private homes." />
+  <title>Chef Evgenii Miami | On-Site Private Chef & Weekly Meal Delivery</title>
+  <meta name="description" content="Private chef in Miami and South Florida offering on-site chef days, private dining, and chef-led weekly meal delivery for private households." />
+  <meta name="theme-color" content="#090806" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodService",
+    "name": "Chef Evgenii Miami",
+    "description": "Private chef service in Miami and South Florida offering on-site chef days, private dining, and chef-led weekly meal delivery for private households.",
+    "url": "https://evgen2325.github.io/chef-evgenii-miami/",
+    "telephone": "+17868200965",
+    "email": "evgenii31599@gmail.com",
+    "priceRange": "From $850/week",
+    "servesCuisine": [
+      "Private Chef",
+      "Luxury Meal Delivery",
+      "European",
+      "Mediterranean",
+      "Eastern European",
+      "Seafood",
+      "Premium Comfort Food"
+    ],
+    "areaServed": [
+      { "@type": "City", "name": "Miami" },
+      { "@type": "City", "name": "Miami Beach" },
+      { "@type": "City", "name": "Fort Lauderdale" },
+      { "@type": "City", "name": "Boca Raton" },
+      { "@type": "AdministrativeArea", "name": "South Florida" }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/miami_cooking_chef/"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Private chef services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Turnkey weekly starter plan",
+          "price": "850",
+          "priceCurrency": "USD",
+          "description": "Chef-led weekly plan for a typical starter household: two people, lunch and dinner, five days per week. Standard groceries, cooking, packaging, and agreed delivery are included; premium ingredients are quoted separately."
+        },
+        {
+          "@type": "Offer",
+          "name": "Premium family plan",
+          "description": "Expanded weekly private chef service with broader menu variety and household-specific preferences."
+        },
+        {
+          "@type": "Offer",
+          "name": "Luxury concierge plan",
+          "description": "High-touch private chef service with premium ingredient options, VIP communication, and custom quote."
+        },
+        {
+          "@type": "Offer",
+          "name": "On-site private chef day",
+          "description": "Chef Evgenii cooks in the client's home. The menu is selected from the on-site menu collection and confirmed after consultation. Pricing depends on menu, guest count, location, and service format."
+        }
+      ]
+    }
+  }
+  </script>
   <style>
     :root {
-      --black: #080705;
-      --coal: #11100d;
-      --panel: #1b1812;
-      --panel-soft: #242016;
-      --gold: #c7a35a;
-      --gold-soft: #e4c982;
-      --cream: #f7efdf;
-      --muted: #b8ad99;
-      --line: rgba(228, 201, 130, .22);
-      --white: #ffffff;
-      --shadow: 0 22px 70px rgba(0, 0, 0, .36);
+      --black: #090806;
+      --coal: #12100d;
+      --graphite: #1d1b17;
+      --panel: #242017;
+      --gold: #caa65a;
+      --gold-strong: #efcf83;
+      --ivory: #f7efdf;
+      --muted: #b9ae9b;
+      --olive: #7f8f67;
+      --wine: #8f3e32;
+      --line: rgba(239, 207, 131, .2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
+      --max: 1180px;
     }
 
     * { box-sizing: border-box; }
@@ -26,47 +88,71 @@
       margin: 0;
       overflow-x: hidden;
       font-family: Arial, Helvetica, sans-serif;
-      color: var(--cream);
+      color: var(--ivory);
       background: var(--black);
       line-height: 1.55;
     }
 
+    body.menu-open { overflow: hidden; }
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
 
-    .scroll-progress {
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      z-index: 99;
+      background: var(--gold);
+      color: #100c06;
+      padding: 10px 14px;
+    }
+
+    .skip-link:focus { left: 8px; }
+
+    .progress {
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 80;
+      z-index: 100;
       width: 100%;
       height: 3px;
       transform-origin: left center;
       transform: scaleX(0);
-      background: linear-gradient(90deg, #8d6a2f, var(--gold-soft), #fff1b8);
+      background: linear-gradient(90deg, var(--wine), var(--gold), var(--gold-strong));
       pointer-events: none;
     }
 
     .nav {
       position: sticky;
       top: 0;
-      z-index: 40;
+      z-index: 60;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 22px;
-      padding: 15px clamp(18px, 5vw, 70px);
-      background: rgba(8, 7, 5, .91);
+      gap: 18px;
+      padding: 14px clamp(16px, 5vw, 68px);
       border-bottom: 1px solid var(--line);
+      background: rgba(9, 8, 6, .92);
       backdrop-filter: blur(14px);
     }
 
     .brand {
+      display: grid;
+      gap: 1px;
+      min-width: max-content;
+    }
+
+    .brand strong {
       font-family: Georgia, 'Times New Roman', serif;
       font-size: 22px;
-      font-weight: 700;
-      color: var(--gold-soft);
-      white-space: nowrap;
+      color: var(--gold-strong);
+      letter-spacing: 0;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 12px;
     }
 
     .nav-links {
@@ -78,499 +164,658 @@
       font-size: 14px;
     }
 
-    .nav-links a:hover,
-    .nav a.active:not(.button),
-    .contact-link:hover { color: var(--gold-soft); }
+    .nav-links a:not(.button):hover,
+    .nav-links a.active { color: var(--gold-strong); }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--ivory);
+      min-height: 42px;
+      padding: 0 12px;
+    }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
       min-height: 48px;
-      padding: 0 22px;
+      padding: 0 21px;
       border: 1px solid var(--gold);
-      border-radius: 5px;
+      border-radius: 6px;
       background: var(--gold);
-      color: #100d07;
-      font-weight: 800;
+      color: #130f08;
       font-size: 14px;
+      font-weight: 800;
       text-align: center;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
     }
 
     .button:hover {
       transform: translateY(-1px);
-      background: var(--gold-soft);
-      border-color: var(--gold-soft);
+      background: var(--gold-strong);
+      border-color: var(--gold-strong);
     }
 
     .button.ghost {
-      background: transparent;
-      color: var(--gold-soft);
+      background: rgba(9, 8, 6, .22);
+      color: var(--gold-strong);
     }
 
-    .button.ghost:hover { background: rgba(228, 201, 130, .08); }
-
-    .contact-strip {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .contact-link {
-      border: 1px solid rgba(228, 201, 130, .18);
-      border-radius: 999px;
-      padding: 8px 11px;
-      background: rgba(255, 255, 255, .03);
-    }
+    .button.ghost:hover { background: rgba(239, 207, 131, .09); }
+    .button.full { width: 100%; }
 
     .hero {
-      min-height: calc(100vh - 76px);
-      display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(340px, .78fr);
-      align-items: stretch;
+      position: relative;
+      min-height: calc(100svh - 72px);
+      display: flex;
+      align-items: flex-end;
+      padding: clamp(90px, 11vw, 150px) clamp(18px, 6vw, 84px) clamp(42px, 8vw, 86px);
       border-bottom: 1px solid var(--line);
+      overflow: hidden;
+      isolation: isolate;
     }
 
-    .hero-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: clamp(34px, 6vw, 78px) clamp(22px, 6vw, 84px);
-      background: radial-gradient(circle at 20% 0%, rgba(199, 163, 90, .15), transparent 35%), var(--black);
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(9, 8, 6, .96) 0%, rgba(9, 8, 6, .82) 42%, rgba(9, 8, 6, .26) 100%),
+        linear-gradient(0deg, rgba(9, 8, 6, .88), rgba(9, 8, 6, .1) 54%, rgba(9, 8, 6, .72)),
+        url("assets/chef-evgenii.jpg") center right / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      z-index: -1;
+      height: 40%;
+      background: linear-gradient(0deg, var(--black), transparent);
+    }
+
+    .hero-inner {
+      width: min(760px, 100%);
     }
 
     .eyebrow {
-      margin: 0 0 16px;
-      color: var(--gold-soft);
-      font-size: 12px;
+      margin: 0 0 14px;
+      color: var(--gold-strong);
+      font-size: 13px;
       font-weight: 800;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      letter-spacing: .02em;
     }
 
-    h1, h2, h3 {
-      margin: 0;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-weight: 700;
-      letter-spacing: 0;
-    }
+    h1, h2, h3, p { margin-top: 0; }
 
     h1 {
-      max-width: 840px;
-      font-size: clamp(38px, 5.1vw, 64px);
-      line-height: 1.03;
-    }
-
-    h2 {
-      font-size: clamp(32px, 4.4vw, 54px);
-      line-height: 1.06;
-    }
-
-    h3 {
-      color: var(--gold-soft);
-      font-size: 24px;
-      line-height: 1.16;
+      margin-bottom: 18px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(43px, 7vw, 88px);
+      line-height: .96;
+      letter-spacing: 0;
+      max-width: 820px;
     }
 
     .lead {
-      max-width: 700px;
-      margin: 22px 0 0;
-      color: var(--cream);
-      font-size: clamp(18px, 2.1vw, 22px);
+      max-width: 640px;
+      margin-bottom: 26px;
+      color: #e6dcca;
+      font-size: clamp(18px, 2vw, 22px);
     }
 
-    .plain-list {
-      display: grid;
-      gap: 10px;
-      padding: 0;
-      margin: 24px 0 0;
-      list-style: none;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .plain-list li::before {
-      content: "";
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      margin-right: 10px;
-      border-radius: 50%;
-      background: var(--gold);
-      vertical-align: 2px;
-    }
-
-    .hero-actions {
+    .hero-points {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 32px;
+      gap: 9px;
+      padding: 0;
+      margin: 0 0 28px;
+      list-style: none;
     }
 
-    .hero-actions .button {
-      min-height: 54px;
-      min-width: 210px;
-      font-size: 15px;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1px;
-      max-width: 760px;
-      margin-top: 38px;
-      border: 1px solid var(--line);
-      background: var(--line);
-    }
-
-    .stat {
-      min-height: 106px;
-      padding: 20px;
-      background: rgba(17, 16, 13, .95);
-    }
-
-    .stat strong {
-      display: block;
-      color: var(--gold-soft);
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 27px;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .stat span {
-      color: var(--muted);
+    .hero-points li {
+      border: 1px solid rgba(239, 207, 131, .24);
+      border-radius: 999px;
+      padding: 8px 11px;
+      color: var(--ivory);
+      background: rgba(255, 255, 255, .04);
       font-size: 13px;
     }
 
-    .hero-media {
-      position: relative;
-      min-height: 520px;
-      overflow: hidden;
-      background: var(--panel);
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
     }
 
-    .hero-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: saturate(.94) contrast(1.05);
-      transform: scale(1.01);
-    }
-
-    .media-label {
-      position: absolute;
-      left: 28px;
-      right: 28px;
-      bottom: 28px;
-      padding: 18px 20px;
-      border: 1px solid var(--line);
-      background: rgba(8, 7, 5, .75);
-      backdrop-filter: blur(12px);
-    }
-
-    .media-label b {
-      display: block;
-      color: var(--gold-soft);
-    }
-
-    .media-label span {
-      display: block;
-      margin-top: 4px;
+    .hero-note {
+      margin: 22px 0 0;
       color: var(--muted);
       font-size: 14px;
     }
 
-    section {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(60px, 8vw, 104px) clamp(20px, 5vw, 70px);
-    }
-
-    .section-head {
-      max-width: 780px;
-      margin-bottom: 34px;
-    }
-
-    .section-head p:not(.eyebrow) {
-      margin: 16px 0 0;
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .dark-band {
-      background: #0d0c09;
-      border-top: 1px solid var(--line);
+    .section {
+      padding: clamp(58px, 8vw, 104px) clamp(18px, 5vw, 68px);
       border-bottom: 1px solid var(--line);
     }
 
-    .grid-3,
-    .grid-4,
-    .steps,
-    .contact-grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .steps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-    .contact-grid { grid-template-columns: 1.05fr .95fr; align-items: start; }
-
-    .card,
-    .step,
-    .price-box,
-    .contact-card,
-    .quote {
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      background: linear-gradient(180deg, rgba(36, 32, 22, .98), rgba(13, 12, 9, .98));
-      box-shadow: var(--shadow);
-    }
-
-    .card,
-    .step,
-    .quote {
-      min-height: 220px;
-      padding: 25px;
-    }
-
-    .card p,
-    .step p,
-    .price-box p,
-    .story p,
-    .quote p,
-    .contact-card p {
-      margin: 12px 0 0;
-      color: var(--muted);
-    }
-
-    .benefit-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-
-    .benefit-list li {
-      min-height: 58px;
-      padding: 16px 16px 16px 42px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, .03);
-      color: var(--cream);
-      position: relative;
-    }
-
-    .benefit-list li::before {
-      content: "";
-      position: absolute;
-      left: 17px;
-      top: 23px;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
-
-    .price-box {
-      display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-      gap: 28px;
-      align-items: center;
-      padding: clamp(24px, 4vw, 38px);
-    }
-
-    .price-main {
-      color: var(--cream);
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 1;
-    }
-
-    .price-main span {
-      display: block;
-      margin-top: 10px;
-      color: var(--muted);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .price-box ul {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      color: var(--muted);
-    }
-
-    .price-box li {
-      padding: 10px 0;
-      border-top: 1px solid rgba(228, 201, 130, .14);
-    }
-
-    .story-wrap {
-      display: grid;
-      grid-template-columns: minmax(300px, .82fr) minmax(0, 1fr);
-      gap: clamp(28px, 5vw, 72px);
-      align-items: center;
-    }
-
-    .story-photo {
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .story-photo img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-    }
-
-    .proofs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 26px;
-    }
-
-    .proofs span {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 9px 12px;
-      color: var(--gold-soft);
-      background: rgba(199, 163, 90, .08);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .step {
-      min-height: 210px;
-      padding: 22px;
-    }
-
-    .step span {
-      display: block;
-      margin-bottom: 12px;
-      color: var(--gold-soft);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .gallery img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      border: 1px solid rgba(228, 201, 130, .18);
-      border-radius: 6px;
-      background: var(--panel);
-    }
-
-    .area-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .area-list span {
-      border: 1px solid var(--line);
-      border-radius: 5px;
-      padding: 12px 14px;
-      color: var(--cream);
-      background: rgba(255, 255, 255, .03);
-    }
-
-    .quote {
-      min-height: 180px;
-    }
-
-    .quote strong {
-      display: block;
-      color: var(--gold-soft);
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 25px;
-    }
-
-    .contact-card {
-      padding: 28px;
-    }
-
-    .contact-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .cta {
-      text-align: center;
-      background: radial-gradient(circle at 50% 0%, rgba(199, 163, 90, .18), transparent 34%), #0a0907;
-      border-top: 1px solid var(--line);
-    }
-
-    .cta h2 {
-      max-width: 860px;
+    .inner {
+      width: min(var(--max), 100%);
       margin: 0 auto;
     }
 
-    .cta p {
-      max-width: 680px;
-      margin: 18px auto 0;
+    .section-head {
+      display: grid;
+      gap: 12px;
+      max-width: 760px;
+      margin-bottom: 30px;
+    }
+
+    .section-head.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(32px, 4.6vw, 56px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--gold-strong);
+      font-size: 23px;
+      line-height: 1.18;
+    }
+
+    .muted { color: var(--muted); }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+    .card,
+    .form-panel,
+    .price-panel,
+    .menu-card,
+    .quote,
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .018));
+      box-shadow: 0 16px 46px rgba(0, 0, 0, .18);
+    }
+
+    .card, .quote, .step { padding: 22px; }
+
+    .card ul,
+    .price-panel ul {
+      margin: 13px 0 0;
+      padding-left: 18px;
       color: var(--muted);
+    }
+
+    .number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #130f08;
+      font-weight: 900;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      background: var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .trust-item {
+      min-height: 128px;
+      padding: 20px;
+      background: #11100d;
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--gold-strong);
+      font-size: 26px;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    .pricing-wrap {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .price-panel {
+      padding: 28px;
+    }
+
+    .price {
+      margin: 12px 0 12px;
+      color: var(--gold-strong);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(42px, 5vw, 66px);
+      line-height: 1;
+    }
+
+    .package-tabs,
+    .menu-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .pill {
+      border: 1px solid rgba(239, 207, 131, .24);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .03);
+      color: var(--ivory);
+      padding: 9px 12px;
+      cursor: pointer;
+    }
+
+    .pill[aria-pressed="true"],
+    .pill.active {
+      background: var(--gold);
+      color: #100d07;
+      border-color: var(--gold);
+      font-weight: 800;
+    }
+
+    .menu-toolbar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .menu-count {
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .menu-intro {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .menu-note {
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .dish-catalog {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 46px;
+    }
+
+    .dish-category {
+      padding: 22px;
+      background:
+        linear-gradient(145deg, rgba(239, 207, 131, .08), rgba(255, 255, 255, .02)),
+        #11100d;
+    }
+
+    .dish-category h3 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: var(--gold-strong);
       font-size: 18px;
     }
 
-    .cta .hero-actions {
-      justify-content: center;
+    .dish-category h3 span {
+      color: var(--muted);
+      font-family: Inter, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    footer {
+    .dish-list {
+      columns: 1;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .dish-list li {
+      position: relative;
+      padding: 8px 0 8px 16px;
+      border-top: 1px solid rgba(255, 255, 255, .07);
+      color: var(--ivory);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .dish-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 16px;
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      background: var(--gold);
+    }
+
+    .menu-gallery-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .menu-card {
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(239, 207, 131, .48);
+    }
+
+    .menu-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #17140e;
+    }
+
+    .menu-card div {
+      padding: 10px;
+      min-height: 68px;
+    }
+
+    .menu-card b {
+      display: block;
+      color: var(--ivory);
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    .menu-card span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .load-more {
+      margin: 22px auto 0;
+    }
+
+    .forms-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .form-panel {
+      padding: 24px;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(239, 207, 131, .28);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, .055);
+      color: var(--ivory);
+      padding: 12px 12px;
+      outline: none;
+    }
+
+    select option { color: #111; }
+    textarea { min-height: 112px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { border-color: var(--gold-strong); }
+
+    .form-actions {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 24px clamp(20px, 5vw, 70px);
-      border-top: 1px solid var(--line);
-      background: var(--black);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .small {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
     }
 
-    .hero-copy > *,
-    .media-label {
-      opacity: 0;
-      transform: translateY(18px);
-      animation: heroRise .72s cubic-bezier(.2, .8, .2, 1) forwards;
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
     }
 
-    .hero-copy .eyebrow { animation-delay: .06s; }
-    .hero-copy h1 { animation-delay: .14s; }
-    .hero-copy .lead { animation-delay: .22s; }
-    .hero-copy .plain-list { animation-delay: .30s; }
-    .hero-actions { animation-delay: .38s; }
-    .hero-stats { animation-delay: .46s; }
-    .media-label { animation-delay: .52s; }
+    .payment-option {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      background: rgba(255, 255, 255, .035);
+    }
+
+    .payment-option strong {
+      display: block;
+      color: var(--gold-strong);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    .process-note {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .process-list {
+      display: grid;
+      gap: 10px;
+      counter-reset: after-submit;
+    }
+
+    .process-list article {
+      position: relative;
+      padding: 18px 18px 18px 58px;
+    }
+
+    .process-list article::before {
+      counter-increment: after-submit;
+      content: counter(after-submit);
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #100d07;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .reference-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(239, 207, 131, .10), rgba(143, 62, 50, .08)),
+        #11100d;
+    }
+
+    .faq {
+      display: grid;
+      gap: 10px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px 18px;
+      background: rgba(255, 255, 255, .03);
+    }
+
+    summary {
+      cursor: pointer;
+      color: var(--gold-strong);
+      font-weight: 800;
+    }
+
+    details p { margin: 12px 0 0; color: var(--muted); }
+
+    .cta {
+      text-align: center;
+      background:
+        linear-gradient(180deg, rgba(143, 62, 50, .12), rgba(9, 8, 6, 0)),
+        var(--coal);
+    }
+
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 24px clamp(18px, 5vw, 68px);
+      color: var(--muted);
+      background: #070604;
+      font-size: 13px;
+    }
+
+    .footer a:hover { color: var(--gold-strong); }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, .78);
+    }
+
+    .modal.is-open { display: flex; }
+
+    .modal-content {
+      width: min(980px, 100%);
+      max-height: 92svh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .75fr);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--coal);
+      box-shadow: var(--shadow);
+    }
+
+    .modal img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      background: #111;
+    }
+
+    .modal-side {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .close {
+      align-self: flex-start;
+      min-width: 42px;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--ivory);
+      cursor: pointer;
+    }
 
     .reveal {
       opacity: 0;
-      transform: translateY(34px);
-      transition: opacity .65s cubic-bezier(.2, .8, .2, 1), transform .65s cubic-bezier(.2, .8, .2, 1);
+      transform: translateY(18px);
+      transition: opacity .55s ease, transform .55s ease;
       transition-delay: var(--delay, 0ms);
     }
 
@@ -579,434 +824,821 @@
       transform: translateY(0);
     }
 
-    .card,
-    .step,
-    .quote,
-    .gallery img,
-    .contact-link {
-      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
-    }
-
-    .card:hover,
-    .step:hover,
-    .quote:hover {
-      transform: translateY(-4px);
-      border-color: rgba(228, 201, 130, .42);
-    }
-
-    .gallery img:hover {
-      transform: scale(1.018);
-      border-color: rgba(228, 201, 130, .50);
-    }
-
-    @keyframes heroRise {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 1100px) {
-      .grid-4,
-      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-
     @media (max-width: 980px) {
-      .hero,
-      .story-wrap,
-      .price-box,
-      .contact-grid { grid-template-columns: 1fr; }
-      .hero-media {
-        min-height: 500px;
-        order: -1;
-      }
-      .grid-3 { grid-template-columns: 1fr; }
-      .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .nav {
-        align-items: flex-start;
-      }
-      .contact-strip {
+      .nav-links {
+        position: fixed;
+        inset: 69px 12px auto;
         display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(9, 8, 6, .98);
+        box-shadow: var(--shadow);
       }
+
+      .nav-links.is-open { display: flex; }
+      .menu-toggle { display: inline-flex; align-items: center; }
+      .grid.three, .grid.two, .pricing-wrap, .forms-layout, .process-note { grid-template-columns: 1fr; }
+      .grid.four, .grid.five, .trust-strip, .payment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .dish-catalog { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .menu-intro, .menu-gallery-head { grid-template-columns: 1fr; align-items: start; }
+      .menu-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
 
-    @media (max-width: 720px) {
-      .nav-links a:not(.button) { display: none; }
-      .nav-links .button { min-height: 42px; padding: 0 14px; }
-      .brand { font-size: 19px; }
+    @media (max-width: 660px) {
       .hero {
         min-height: auto;
+        align-items: flex-end;
+        padding-top: 220px;
       }
-      .hero-copy {
-        padding-top: 34px;
+
+      .hero::before {
+        background:
+          linear-gradient(0deg, rgba(9, 8, 6, .98) 0%, rgba(9, 8, 6, .84) 52%, rgba(9, 8, 6, .18) 100%),
+          url("assets/chef-evgenii.jpg") top center / cover no-repeat;
       }
-      .hero-media {
-        min-height: 390px;
-      }
-      .hero-actions .button,
-      .button {
-        width: 100%;
-        min-width: 0;
-      }
-      .hero-stats,
-      .benefit-list,
-      .grid-4,
-      .steps {
-        grid-template-columns: 1fr;
-      }
-      .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .card,
-      .step,
-      .quote,
-      .contact-card {
-        min-height: auto;
-        padding: 22px;
-      }
+
+      .actions .button,
+      .form-actions .button { width: 100%; }
+
+      .field-grid, .grid.four, .grid.five, .trust-strip, .payment-grid { grid-template-columns: 1fr; }
+      .dish-catalog { grid-template-columns: 1fr; }
+      .dish-category { padding: 18px; }
+      .dish-category h3 { align-items: flex-start; flex-direction: column; }
+      .menu-intro .button { width: 100%; }
+      .reference-panel { grid-template-columns: 1fr; }
+      .reference-panel .button { width: 100%; }
+      .menu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+      .menu-toolbar { align-items: flex-start; flex-direction: column; }
+      .modal-content { grid-template-columns: 1fr; overflow-y: auto; }
+      .modal img { min-height: 320px; max-height: 56svh; }
+      h1 { font-size: clamp(42px, 14vw, 64px); }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      *,
-      *::before,
-      *::after {
+      *, *::before, *::after {
         animation-duration: .001ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: .001ms !important;
-        scroll-behavior: auto !important;
       }
-      .reveal,
-      .hero-copy > *,
-      .media-label {
-        opacity: 1;
-        transform: none;
-      }
+      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
-  <div class="scroll-progress" aria-hidden="true"></div>
-  <nav class="nav">
-    <a class="brand" href="#top">Chef Evgenii Miami</a>
-    <div class="nav-links">
-      <a href="#benefits">What you get</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="#top" aria-label="Chef Evgenii home">
+      <strong>Chef Evgenii</strong>
+      <span>Private Chef | Miami</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#formats">Services</a>
       <a href="#pricing">Pricing</a>
-      <a href="#story">About</a>
-      <a href="#contact">Contact</a>
-      <a class="button" href="tel:+17868200965">Book consultation</a>
+      <a href="#menu">On-site menu</a>
+      <a href="#booking">Booking</a>
+      <a href="#payment">Payment</a>
+      <a class="button" href="https://wa.me/17868200965?text=Hi%20Chef%20Evgenii%2C%20I%20would%20like%20to%20ask%20about%20your%20private%20chef%20services%20in%20South%20Florida." target="_blank" rel="noreferrer">WhatsApp</a>
     </div>
   </nav>
 
-  <main id="top">
-    <header class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Personal chef in Miami</p>
-        <h1>Private chef meals for your home in Miami.</h1>
-        <p class="lead">I create a custom weekly menu, cook restaurant-level dishes, and deliver prepared meals to your home three times per week.</p>
-        <ul class="plain-list">
-          <li>Individual menu for your family, diet, schedule, and preferences.</li>
-          <li>Premium ingredients, chef preparation, and clean packaging.</li>
-          <li>Service for Miami, Broward, and Boca Raton households.</li>
-        </ul>
-        <div class="hero-actions">
-          <a class="button" href="tel:+17868200965">Book consultation</a>
-          <a class="button ghost" href="#menu">View menu style</a>
-        </div>
-        <div class="hero-stats" aria-label="Chef credentials">
-          <div class="stat"><strong>20+</strong><span>years in professional kitchens and private service</span></div>
-          <div class="stat"><strong>3x</strong><span>weekly delivery rhythm available for private homes</span></div>
-          <div class="stat"><strong>Miami</strong><span>personal chef service for families and busy households</span></div>
-        </div>
-      </div>
-      <div class="hero-media">
-        <img src="assets/chef-evgenii.jpg" alt="Chef Evgenii in chef jacket" />
-        <div class="media-label">
-          <b>Chef Evgenii</b>
-          <span>Personal chef in Miami. Custom weekly meals for private homes.</span>
-        </div>
-      </div>
-    </header>
-
-    <section class="dark-band" aria-label="Quick contact options">
-      <div class="contact-strip">
-        <span>Contact:</span>
-        <a class="contact-link" href="https://wa.me/17868200965" target="_blank" rel="noreferrer">WhatsApp</a>
-        <a class="contact-link" href="tel:+17868200965">+1 786 820 0965</a>
-        <a class="contact-link" href="mailto:evgenii31599@gmail.com">evgenii31599@gmail.com</a>
-        <a class="contact-link" href="https://www.instagram.com/miami_cooking_chef/" target="_blank" rel="noreferrer">@miami_cooking_chef</a>
-      </div>
-    </section>
-
-    <section id="benefits">
-      <div class="section-head">
-        <p class="eyebrow">What the client gets</p>
-        <h2>A private chef system for your week.</h2>
-        <p>You do not need to plan meals, shop, cook, or rely on restaurants every night. The food is prepared for your household and ready to reheat when needed.</p>
-      </div>
-      <ul class="benefit-list">
-        <li>Individual weekly menu</li>
-        <li>Grocery sourcing and product selection</li>
+  <header class="hero" id="top">
+    <div class="hero-inner reveal">
+      <p class="eyebrow">Miami | Broward | Boca Raton</p>
+      <h1>Private chef service for your home in South Florida.</h1>
+      <p class="lead">Choose chef-led weekly meal delivery or book Chef Evgenii to cook in your home for a private chef day.</p>
+      <ul class="hero-points" aria-label="Service highlights">
+        <li>Personal chef in Miami</li>
+        <li>Weekly meal delivery</li>
+        <li>On-site private chef days</li>
         <li>Restaurant-level cooking</li>
-        <li>Delivery three times per week</li>
-        <li>Premium packaging</li>
-        <li>Meals ready to reheat</li>
-        <li>Miami, Broward, and Boca Raton service area</li>
-        <li>Preference tracking after each week</li>
+        <li>Menus tailored to your household</li>
       </ul>
-    </section>
+      <div class="actions">
+        <a class="button" href="#booking">Book consultation</a>
+        <a class="button ghost" href="#menu">View on-site menu</a>
+      </div>
+      <p class="hero-note">For private households that value privacy, consistent quality, and professional food prepared around real life.</p>
+    </div>
+  </header>
 
-    <section id="menu" class="dark-band">
-      <div class="section-head">
-        <p class="eyebrow">Menu style</p>
-        <h2>Custom food for the way your family actually eats.</h2>
-        <p>The menu is built after a short consultation. It can be clean and healthy, high-protein, Mediterranean, family-style, or more elevated for dinner guests.</p>
-      </div>
-      <div class="grid-3">
-        <article class="card">
-          <h3>Proteins and seafood</h3>
-          <p>Fish, seafood, beef, chicken, lamb, turkey, sauces, and sides prepared so they travel and reheat well.</p>
-        </article>
-        <article class="card">
-          <h3>Daily meals</h3>
-          <p>Lunches, dinners, salads, soups, vegetables, grains, sauces, and meals that keep the week organized.</p>
-        </article>
-        <article class="card">
-          <h3>Private preferences</h3>
-          <p>Allergies, kids, dislikes, low-carb, wellness-focused meals, comfort food, guest nights, and special requests.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="pricing">
-      <div class="section-head">
-        <p class="eyebrow">Pricing</p>
-        <h2>Starting from $850/week</h2>
-        <p>A typical plan includes freshly prepared lunches and dinners for five days per week.</p>
-      </div>
-      <div class="price-box">
-        <div class="price-main">
-          From $850 / week
-          <span>Every client is different, so each service is tailored to your needs.</span>
+  <main id="main">
+    <section class="section" id="formats">
+      <div class="inner">
+        <div class="section-head center">
+          <p class="eyebrow">Two service formats</p>
+          <h2>Meals delivered for the week, or a chef cooking in your home.</h2>
+          <p class="muted">Choose the format that fits your household. They use different menu and pricing systems.</p>
         </div>
-        <div>
-          <h3>Final pricing depends on:</h3>
+        <div class="grid two">
+          <article class="card reveal">
+            <p class="eyebrow">Weekly service</p>
+            <h3>Chef-led meal delivery</h3>
+            <p class="muted">Share allergies, restrictions, favorite flavors, dislikes, and portion needs. Chef Evgenii builds the weekly menu, cooks, packs, and delivers it.</p>
+            <ul>
+              <li>Turnkey plans from $850/week</li>
+              <li>Not a dish-by-dish ordering service</li>
+              <li>Prepared meals ready to reheat</li>
+            </ul>
+            <a class="button full" href="#pricing">View weekly pricing</a>
+          </article>
+          <article class="card reveal">
+            <p class="eyebrow">At your home</p>
+            <h3>On-site private chef day</h3>
+            <p class="muted">Chef Evgenii comes to your home and cooks on location. Use the on-site menu below to select dishes and build the right format for your day.</p>
+            <ul>
+              <li>Choose preferred dishes from the menu</li>
+              <li>Private household, dinner, or event format</li>
+              <li>Custom quote by menu, guests, and location</li>
+            </ul>
+            <a class="button full" href="#menu">Explore the on-site menu</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="service">
+      <div class="inner">
+        <div class="section-head">
+          <p class="eyebrow">What you get</p>
+          <h2>Weekly private chef service built around your household.</h2>
+          <p class="muted">The offer is simple: a professional chef plans, cooks, packs, and delivers meals that fit your taste, schedule, and standards.</p>
+        </div>
+        <div class="grid three">
+          <article class="card reveal">
+            <h3>Custom menu</h3>
+            <p class="muted">Menu built around preferences, allergies, calories, food restrictions, and the way your family actually eats.</p>
+            <ul>
+              <li>Lunch and dinner plans</li>
+              <li>Balanced weekly variety</li>
+              <li>Premium ingredients on request</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <h3>Chef-prepared meals</h3>
+            <p class="muted">Restaurant-level technique adapted for meal delivery: clean plating, controlled portions, and food that reheats well.</p>
+            <ul>
+              <li>Prepared by Chef Evgenii</li>
+              <li>Ready-to-reheat meals</li>
+              <li>Clear storage guidance</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <h3>Delivery rhythm</h3>
+            <p class="muted">A practical weekly flow for private homes in Miami, Broward, and Boca Raton.</p>
+            <ul>
+              <li>Up to 3 deliveries per week</li>
+              <li>Premium packaging</li>
+              <li>Concierge-level communication</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <h3>Household profile</h3>
+            <p class="muted">Preferences, allergies, portion needs, favorite dishes, and dislikes are tracked so every week becomes more precise.</p>
+            <ul>
+              <li>Dietary notes</li>
+              <li>Family preferences</li>
+              <li>Menu memory</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <h3>Fridge-ready system</h3>
+            <p class="muted">Meals are packed cleanly, labeled by dish and day, and organized for a private-home fridge.</p>
+            <ul>
+              <li>Labeled containers</li>
+              <li>Clear storage order</li>
+              <li>Easy weekly planning</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <h3>Reheating notes</h3>
+            <p class="muted">Simple reheating guidance helps each dish taste close to the way it left the kitchen.</p>
+            <ul>
+              <li>Dish-by-dish notes</li>
+              <li>Texture-conscious prep</li>
+              <li>Less daily decision-making</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="inner">
+        <div class="trust-strip reveal">
+          <div class="trust-item"><strong>20+</strong><span class="muted">years in professional kitchens and private service</span></div>
+          <div class="trust-item"><strong>5-star</strong><span class="muted">hotel and fine-dining background</span></div>
+          <div class="trust-item"><strong>Miami</strong><span class="muted">private chef experience since 2023</span></div>
+          <div class="trust-item"><strong>Family</strong><span class="muted">focused meals for real weekly life</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="inner pricing-wrap">
+        <div class="section-head">
+          <p class="eyebrow">Pricing</p>
+          <h2>Turnkey weekly plans from $850/week.</h2>
+          <p class="muted">The starter plan is chef-led and turnkey: you share restrictions, dislikes, favorite flavors, and portion needs; Chef Evgenii designs the weekly menu, shops, cooks, packs, and delivers. This is not a dish-by-dish ordering system.</p>
+        </div>
+        <div class="price-panel reveal">
+          <p class="eyebrow">Starter example</p>
+          <div class="price">$850+</div>
+          <p>2 people | lunch + dinner | 5 days | 20 portions</p>
           <ul>
-            <li>Number of people</li>
-            <li>Meal volume and calorie requirements</li>
-            <li>Menu customization and dietary preferences</li>
-            <li>Ingredient selection</li>
-            <li>Delivery schedule</li>
+            <li>Chef-proposed weekly menu</li>
+            <li>Standard groceries included</li>
+            <li>Freshly prepared meals</li>
+            <li>Premium packaging</li>
+            <li>Delivery schedule by agreement</li>
           </ul>
-          <p class="pricing-note">Contact us for a personalized quote designed specifically for your household.</p>
-          <div class="hero-actions">
-            <a class="button" href="mailto:evgenii31599@gmail.com?subject=Private%20chef%20pricing%20request&body=Hi%20Chef%20Evgenii%2C%20I%20would%20like%20a%20personalized%20quote%20for%20weekly%20private%20chef%20meals.%0A%0AFamily%20size%3A%0ALocation%3A%0AMeal%20schedule%3A%0AFood%20preferences%3A">Get my personalized quote</a>
+          <p class="small">Wagyu, lobster, caviar, rare ingredients, extra portions, extra delivery distance, and special requests may change the quote.</p>
+          <div class="actions">
+            <a class="button" href="#booking">Get a quote</a>
+            <a class="button ghost" href="#packages">Compare packages</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="story" class="dark-band">
-      <div class="story-wrap">
-        <div class="story-photo">
-          <img src="assets/chef-evgenii.jpg" alt="Chef Evgenii portrait" />
+    <section class="section" id="packages">
+      <div class="inner">
+        <div class="section-head center">
+          <p class="eyebrow">Service packages</p>
+          <h2>Choose the level of service that matches your household.</h2>
         </div>
-        <div class="story">
-          <p class="eyebrow">About Chef Evgenii</p>
-          <h2>A professional chef you can trust inside your family routine.</h2>
-          <p>My name is Evgenii. I started cooking professionally in 2007 and built my career from the bottom up.</p>
-          <p>I worked in high-level restaurants and five-star hotel environments in Saint Petersburg, including Four Seasons, Marriott, Hilton, Hampton, and Kempinski-level kitchens. I also worked with a Michelin-level chef during my time at Four Seasons.</p>
-          <p>Since moving to Miami, I have worked as a personal chef for a private family. That experience shaped this service: consistent food, clean communication, privacy, timing, and attention to each household's preferences.</p>
-          <div class="proofs">
-            <span>20+ years of experience</span>
-            <span>Michelin-level restaurant exposure</span>
-            <span>Five-star hotel background</span>
-            <span>Personal chef in Miami</span>
+        <div class="grid three">
+          <article class="card reveal">
+            <h3>Essential Weekly</h3>
+            <p class="muted">For a household that wants consistent, clean prepared meals without daily cooking.</p>
+            <ul>
+              <li>Lunch + dinner structure</li>
+              <li>Chef-led weekly selection</li>
+              <li>Turnkey from $850/week</li>
+            </ul>
+            <button class="button full package-choose" type="button" data-package="Essential Weekly">Request this plan</button>
+          </article>
+          <article class="card reveal">
+            <h3>Premium Family</h3>
+            <p class="muted">More customization, broader menu variety, and a stronger delivery rhythm.</p>
+            <ul>
+              <li>More dietary detail</li>
+              <li>Rotating chef-led menu</li>
+              <li>Best for busy families</li>
+            </ul>
+            <button class="button full package-choose" type="button" data-package="Premium Family">Request this plan</button>
+          </article>
+          <article class="card reveal">
+            <h3>Luxury Concierge</h3>
+            <p class="muted">For clients who want the highest touch: premium ingredients, events, gifts, and VIP communication.</p>
+            <ul>
+              <li>Luxury ingredient options</li>
+              <li>VIP service details</li>
+              <li>Custom quote only</li>
+            </ul>
+            <button class="button full package-choose" type="button" data-package="Luxury Concierge">Request this plan</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="inner">
+        <div class="menu-intro">
+          <div class="section-head">
+            <p class="eyebrow">On-site private chef menu</p>
+            <h2>Choose dishes for a private chef day in your home.</h2>
+            <p class="menu-note"><strong>This menu is for on-site service, not weekly delivery.</strong> Chef Evgenii comes to your location and cooks the agreed menu in your kitchen. Select preferred dishes below; the final combination, portions, timing, and quote are confirmed after consultation.</p>
+          </div>
+          <a class="button" href="#booking" data-service-choice="On-site private chef day">Book an on-site chef day</a>
+        </div>
+
+        <div class="dish-catalog">
+          <article class="card dish-category reveal">
+            <h3>Meat & poultry mains <span>23 dishes</span></h3>
+            <ul class="dish-list">
+              <li>Classic Chicken Kyiv with herb butter</li>
+              <li>Slow-roasted BBQ pork ribs</li>
+              <li>Chicken leg confit with pan jus</li>
+              <li>Chinese-style glazed chicken</li>
+              <li>Moroccan-spiced chicken with herbs</li>
+              <li>Chipotle-marinated chicken</li>
+              <li>Chicken thighs with mushrooms and caramelized onions</li>
+              <li>Char-grilled chicken thighs</li>
+              <li>Asian-style grilled chicken thighs</li>
+              <li>Whole roasted chicken with aromatic herbs</li>
+              <li>Slow-roasted lamb</li>
+              <li>Osso buco with rich braising sauce</li>
+              <li>Wine-braised rabbit, slow-cooked for four hours</li>
+              <li>Wagyu steaks, quoted separately</li>
+              <li>Filet mignon, quoted separately</li>
+              <li>Beef azu, slow-simmered with pickles and potatoes</li>
+              <li>Classic Beef Stroganoff</li>
+              <li>Uzbek-style lamb pilaf</li>
+              <li>Stuffed cabbage rolls with slow-simmered sauce</li>
+              <li>Golden schnitzel</li>
+              <li>Tender rice meatballs</li>
+              <li>Meatballs in slow-cooked tomato sauce</li>
+              <li>Swedish meatballs with creamy sauce</li>
+            </ul>
+          </article>
+
+          <article class="card dish-category reveal">
+            <h3>Fish & seafood <span>6 dishes</span></h3>
+            <ul class="dish-list">
+              <li>Salmon steak with white wine sauce</li>
+              <li>Herb-baked salmon</li>
+              <li>Salmon cakes with light sauce</li>
+              <li>Polish-style white fish with delicate butter sauce</li>
+              <li>Grilled lobster, quoted separately</li>
+              <li>Udon noodles with shrimp and vegetables</li>
+            </ul>
+          </article>
+
+          <article class="card dish-category reveal">
+            <h3>Pasta & baked dishes <span>2 dishes</span></h3>
+            <ul class="dish-list">
+              <li>Classic layered lasagna</li>
+              <li>Asian-inspired layered lasagna</li>
+            </ul>
+          </article>
+
+          <article class="card dish-category reveal">
+            <h3>Salads <span>14 dishes</span></h3>
+            <ul class="dish-list">
+              <li>Layered Mimosa salad</li>
+              <li>Shuba layered herring and beet salad</li>
+              <li>Classic Olivier salad</li>
+              <li>Vinaigrette beet salad</li>
+              <li>Caesar salad with chef-prepared dressing</li>
+              <li>Greek salad with feta and herbs</li>
+              <li>Fattoush with crisp vegetables</li>
+              <li>Chicken and bean salad</li>
+              <li>Beef salad with herbs</li>
+              <li>Duck salad with seasonal accents</li>
+              <li>Beet and strawberry salad</li>
+              <li>Radish, dill, and sour cream salad</li>
+              <li>Vitamin cabbage salad</li>
+              <li>Burrata with tomatoes and basil</li>
+            </ul>
+          </article>
+
+          <article class="card dish-category reveal">
+            <h3>Soups <span>11 dishes</span></h3>
+            <ul class="dish-list">
+              <li>Split pea soup with smoked meats</li>
+              <li>Zuppa Toscana-style meat soup</li>
+              <li>Traditional clear fish soup</li>
+              <li>Finnish salmon soup with cream</li>
+              <li>Tomato soup with white fish and basil</li>
+              <li>Lamb shurpa with vegetables</li>
+              <li>Chicken soup with tender meatballs</li>
+              <li>Lentil soup with herbs</li>
+              <li>Velvety pumpkin soup</li>
+              <li>Solyanka mixed meat soup</li>
+              <li>Traditional borscht with slow-cooked broth</li>
+            </ul>
+          </article>
+
+          <article class="card dish-category reveal">
+            <h3>Sides & vegetables <span>5 dishes</span></h3>
+            <ul class="dish-list">
+              <li>Silky mashed potatoes</li>
+              <li>Pan-fried potatoes with mushrooms</li>
+              <li>Georgian-style vegetables with herbs</li>
+              <li>Khorovats grilled vegetables</li>
+              <li>Braised artichokes with burrata and tomato sauce</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="menu-gallery-head">
+          <div>
+            <p class="eyebrow">Real food by Chef Evgenii</p>
+            <h2>Selected dishes prepared and photographed in real service.</h2>
+            <p class="muted">A focused collection of real dishes by Chef Evgenii. These photographs show the standard and style available for on-site private chef bookings.</p>
           </div>
         </div>
+        <div class="menu-toolbar">
+          <div class="menu-filters" id="menuFilters" aria-label="Menu filters"></div>
+          <div class="menu-count" id="menuCount">Loading menu...</div>
+        </div>
+        <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+        <button class="button ghost load-more" type="button" id="loadMore">Load more dishes</button>
       </div>
     </section>
 
-    <section id="process">
-      <div class="section-head">
-        <p class="eyebrow">How it works</p>
-        <h2>Simple for you. Precise behind the scenes.</h2>
-      </div>
-      <div class="steps">
-        <article class="step">
-          <span>Step 1</span>
-          <h3>Free consultation</h3>
-          <p>We discuss your family, schedule, food preferences, allergies, and location.</p>
-        </article>
-        <article class="step">
-          <span>Step 2</span>
-          <h3>Menu planning</h3>
-          <p>I create a weekly menu that fits your household and level of service.</p>
-        </article>
-        <article class="step">
-          <span>Step 3</span>
-          <h3>Grocery sourcing</h3>
-          <p>Ingredients are selected for freshness, quality, and the menu we agreed on.</p>
-        </article>
-        <article class="step">
-          <span>Step 4</span>
-          <h3>Cooking and delivery</h3>
-          <p>Meals are prepared, packed, labeled, and delivered to your home.</p>
-        </article>
-        <article class="step">
-          <span>Step 5</span>
-          <h3>You enjoy the meals</h3>
-          <p>Your food is ready to reheat. Feedback improves the next menu.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="visuals" class="dark-band">
-      <div class="section-head">
-        <p class="eyebrow">Food examples</p>
-        <h2>Visual examples of the current menu direction.</h2>
-        <p>Photo selection will be updated separately with more real dishes and process shots.</p>
-      </div>
-      <div class="gallery" aria-label="Food gallery">
-        <img src="assets/luxury-food/luxury-lobster.png" alt="Prepared lobster dish" />
-        <img src="assets/luxury-food/luxury-beef.png" alt="Prepared beef dish" />
-        <img src="assets/luxury-food/luxury-scallops.png" alt="Prepared scallop dish" />
-      </div>
-    </section>
-
-    <section id="trust">
-      <div class="section-head">
-        <p class="eyebrow">Why clients choose this</p>
-        <h2>The service solves four real problems.</h2>
-      </div>
-      <div class="grid-4">
-        <article class="quote">
-          <strong>No daily food stress</strong>
-          <p>Your family has prepared meals ready without deciding what to order every night.</p>
-        </article>
-        <article class="quote">
-          <strong>Private standard</strong>
-          <p>The service is built around your home, your preferences, and your weekly rhythm.</p>
-        </article>
-        <article class="quote">
-          <strong>Better than takeout</strong>
-          <p>Meals are planned as a weekly system, not random restaurant orders.</p>
-        </article>
-        <article class="quote">
-          <strong>Consistency</strong>
-          <p>The menu improves as I learn what your household likes and does not like.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="area" class="dark-band">
-      <div class="section-head">
-        <p class="eyebrow">Service area</p>
-        <h2>Serving private homes in South Florida.</h2>
-        <p>Best fit: families, executives, seasonal residents, busy households, and private homes that want reliable chef-prepared meals.</p>
-        <div class="area-list">
-          <span>Miami</span>
-          <span>Miami Beach</span>
-          <span>Brickell</span>
-          <span>Coral Gables</span>
-          <span>Coconut Grove</span>
-          <span>Key Biscayne</span>
-          <span>Aventura</span>
-          <span>Broward</span>
-          <span>Boca Raton</span>
+    <section class="section">
+      <div class="inner">
+        <div class="section-head center">
+          <p class="eyebrow">How it works</p>
+          <h2>From first message to the right service for your home.</h2>
+        </div>
+        <div class="grid five-steps grid five">
+          <article class="step reveal"><span class="number">1</span><h3>Consultation</h3><p class="muted">You share household size, schedule, goals, preferences, allergies, and location.</p></article>
+          <article class="step reveal"><span class="number">2</span><h3>Choose format</h3><p class="muted">Select weekly meal delivery or an on-site private chef day.</p></article>
+          <article class="step reveal"><span class="number">3</span><h3>Quote</h3><p class="muted">You receive a clear quote and a secure payment/deposit link.</p></article>
+          <article class="step reveal"><span class="number">4</span><h3>Menu</h3><p class="muted">Weekly delivery is chef-led; on-site clients select preferred dishes for confirmation.</p></article>
+          <article class="step reveal"><span class="number">5</span><h3>Service</h3><p class="muted">Meals are delivered on schedule, or Chef Evgenii arrives and cooks in your home.</p></article>
         </div>
       </div>
     </section>
 
-    <section id="contact">
-      <div class="contact-grid">
-        <div class="section-head" style="margin-bottom:0">
-          <p class="eyebrow">Contact</p>
-          <h2>Book a short consultation.</h2>
-          <p>Send your household size, location, food preferences, and ideal delivery schedule. I will reply with the next steps and an estimated weekly range.</p>
-        </div>
-        <div class="contact-card">
-          <h3>Chef Evgenii Miami</h3>
-          <p>Personal chef meals for Miami, Broward, and Boca Raton homes.</p>
-          <div class="contact-buttons">
-            <a class="button" href="mailto:evgenii31599@gmail.com?subject=Private%20chef%20consultation%20in%20Miami&body=Hi%20Chef%20Evgenii%2C%20I%20would%20like%20to%20book%20a%20consultation.%0A%0AFamily%20size%3A%0ALocation%3A%0AFood%20preferences%3A%0AIdeal%20delivery%20schedule%3A">Email</a>
-            <a class="button ghost" href="https://wa.me/17868200965" target="_blank" rel="noreferrer">WhatsApp</a>
-            <a class="button ghost" href="tel:+17868200965">Call</a>
-            <a class="button ghost" href="https://www.instagram.com/miami_cooking_chef/" target="_blank" rel="noreferrer">Instagram</a>
+    <section class="section" id="booking">
+      <div class="inner forms-layout">
+        <div class="section-head">
+          <p class="eyebrow">Client intake</p>
+          <h2>Tell me which private chef service you need.</h2>
+          <p class="muted">This form prepares a clean WhatsApp or email message. It does not store your private data on this website.</p>
+          <div class="quote reveal">
+            <h3>Best-fit clients</h3>
+            <p class="muted">Busy families, executives, professionals, and private households looking for weekly prepared meals or a professional chef cooking at home.</p>
           </div>
         </div>
+        <form class="form-panel reveal" id="bookingForm">
+          <div class="field-grid">
+            <label>Service<select name="service" required><option value="">Select service</option><option>Weekly meal delivery</option><option>On-site private chef day</option><option>Private dinner or event</option></select></label>
+            <label>Full name<input name="name" autocomplete="name" required /></label>
+            <label>Phone<input name="phone" autocomplete="tel" placeholder="+1..." required /></label>
+            <label>Email<input name="email" type="email" autocomplete="email" placeholder="you@example.com" /></label>
+            <label>Location<select name="location" required><option value="">Select area</option><option>Miami</option><option>Miami Beach</option><option>Fort Lauderdale / Broward</option><option>Boca Raton</option><option>Other South Florida</option></select></label>
+            <label>Household size<input name="people" type="number" min="1" max="12" placeholder="2" required /></label>
+            <label>Schedule / format<select name="meals"><option>Lunch + dinner, 5 days</option><option>Lunch only</option><option>Dinner only</option><option>One on-site chef day</option><option>Private dinner or event</option><option>Custom schedule</option></select></label>
+            <label>Budget range<select name="budget"><option>$850-$1,000/week</option><option>$1,000-$1,500/week</option><option>$1,500+/week</option><option>On-site service: custom quote</option><option>Need guidance</option></select></label>
+            <label>Preferred contact<select name="contact"><option>WhatsApp</option><option>Phone call</option><option>Email</option></select></label>
+          </div>
+          <label style="margin-top:12px;">Food preferences, allergies, goals<textarea name="notes" placeholder="Example: Mediterranean, high protein, no pork, kids meals, low sugar..."></textarea></label>
+          <div class="form-actions">
+            <button class="button" type="submit" data-action="whatsapp">Send via WhatsApp</button>
+            <button class="button ghost" type="button" id="emailRequest">Send by email</button>
+          </div>
+          <p class="small">After the intake, you receive the relevant menu process, a clear quote, available dates, and a payment/deposit link.</p>
+        </form>
       </div>
     </section>
 
-    <section class="cta">
-      <h2>Ready to make your weekly food simple?</h2>
-      <p>Book a consultation and I will help define the right menu, delivery rhythm, and weekly plan for your home.</p>
-      <div class="hero-actions">
-        <a class="button" href="tel:+17868200965">Book consultation</a>
-        <a class="button ghost" href="#menu">View menu style</a>
+    <section class="section" id="after-submit">
+      <div class="inner process-note">
+        <div class="section-head">
+          <p class="eyebrow">After you submit the form</p>
+          <h2>A simple path from first message to confirmed service.</h2>
+          <p class="muted">Your request is reviewed according to the service selected: weekly delivery or an on-site private chef booking.</p>
+        </div>
+        <div class="process-list">
+          <article class="card reveal">
+            <h3>Intake review</h3>
+            <p class="muted">Your location, household size, restrictions, dislikes, favorite dishes, and schedule are reviewed.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Short consultation</h3>
+            <p class="muted">We confirm the practical details: location, portions or guests, allergies, kitchen setup, timing, and service format.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Correct menu process</h3>
+            <p class="muted">Weekly delivery receives a chef-led menu. On-site clients choose preferred dishes and receive a confirmed menu for the day.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Quote and start date</h3>
+            <p class="muted">You receive the quote, available start date or booking date, and a secure deposit/payment link.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="inner">
+        <div class="reference-panel reveal">
+          <div>
+            <p class="eyebrow">Client trust</p>
+            <h2>Private references available upon request.</h2>
+            <p class="muted">Real client feedback is available from Instagram Highlights and can be shared privately during consultation. Names and household details are kept discreet.</p>
+          </div>
+          <a class="button" href="https://www.instagram.com/miami_cooking_chef/" target="_blank" rel="noreferrer">View Instagram</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="payment">
+      <div class="inner">
+        <div class="section-head center">
+          <p class="eyebrow">Payment-ready</p>
+          <h2>Consultation, deposit, and weekly payment flow.</h2>
+          <p class="muted">After your quote is approved, you receive a secure payment link for the deposit or weekly invoice.</p>
+        </div>
+        <div class="payment-grid">
+          <article class="payment-option reveal">
+            <strong>$0</strong>
+            <h3>Consultation</h3>
+            <p class="muted">Start with a short call or WhatsApp intake. Best for new clients.</p>
+            <button class="button full payment-request" type="button" data-payment="Free consultation">Book consultation</button>
+          </article>
+          <article class="payment-option reveal">
+            <strong>$250</strong>
+            <h3>Starter deposit</h3>
+            <p class="muted">Suggested deposit after quote approval to reserve planning and prep time.</p>
+            <button class="button full payment-request" type="button" data-payment="$250 starter deposit">Request payment link</button>
+          </article>
+          <article class="payment-option reveal">
+            <strong>$850+</strong>
+            <h3>Weekly plan</h3>
+            <p class="muted">Turnkey starter plan for a typical weekly household structure. Premium ingredients and expanded service are quoted separately.</p>
+            <button class="button full payment-request" type="button" data-payment="$850+ weekly plan">Request invoice</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="inner grid two">
+        <div class="section-head">
+          <p class="eyebrow">Questions</p>
+          <h2>Clear answers before you book.</h2>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Does $850/week include everything?</summary>
+            <p>For the starter example, yes: $850/week is a turnkey starting plan for two people, lunch and dinner, five days per week, with standard groceries, cooking, packaging, and agreed delivery. Wagyu, lobster, caviar, rare ingredients, extra portions, long-distance delivery, and special requests are quoted separately.</p>
+          </details>
+          <details>
+            <summary>Do I choose every dish?</summary>
+            <p>For weekly meal delivery, no: Chef Evgenii proposes a balanced weekly menu based on your profile. For an on-site private chef day, you can choose preferred dishes from the menu and the final combination is confirmed after consultation.</p>
+          </details>
+          <details>
+            <summary>Is the menu shown on this page available for delivery?</summary>
+            <p>The dish menu is specifically for on-site private chef bookings, when Chef Evgenii cooks at your home. Weekly delivery uses a separate chef-led menu designed around your restrictions, favorite flavors, portions, and schedule.</p>
+          </details>
+          <details>
+            <summary>Where do you deliver?</summary>
+            <p>Miami, Broward, Boca Raton, and selected South Florida areas depending on schedule and distance.</p>
+          </details>
+          <details>
+            <summary>How do payments work?</summary>
+            <p>After consultation and quote approval, you receive a secure payment link or invoice. This site is ready for payment links but does not collect card data directly.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="inner">
+        <div class="section-head center">
+          <p class="eyebrow">Next step</p>
+          <h2>Send the intake and get a quote for your household.</h2>
+          <p class="muted">Tell me your location, household or guest count, preferred service, schedule, and food preferences.</p>
+        </div>
+        <div class="actions" style="justify-content:center;">
+          <a class="button" href="#booking">Start intake</a>
+          <a class="button ghost" href="https://wa.me/17868200965?text=Hi%20Chef%20Evgenii%2C%20I%20would%20like%20to%20ask%20about%20your%20private%20chef%20services%20in%20South%20Florida." target="_blank" rel="noreferrer">WhatsApp now</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <span>Chef Evgenii Miami</span>
-    <span>Private chef meals for Miami homes</span>
-    <a href="tel:+17868200965">+1 786 820 0965</a>
-    <a href="https://wa.me/17868200965" target="_blank" rel="noreferrer">WhatsApp</a>
-    <a href="mailto:evgenii31599@gmail.com">evgenii31599@gmail.com</a>
+  <footer class="footer">
+    <span>Chef Evgenii | Private Chef & Luxury Meal Delivery | Miami</span>
+    <span><a href="tel:+17868200965">+1 786 820 0965</a> | <a href="mailto:evgenii31599@gmail.com">evgenii31599@gmail.com</a> | <a href="https://www.instagram.com/miami_cooking_chef/" target="_blank" rel="noreferrer">Instagram</a></span>
   </footer>
 
+  <div class="modal" id="menuModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <img id="modalImage" alt="" />
+      <div class="modal-side">
+        <button class="close" type="button" id="modalClose" aria-label="Close menu item">X</button>
+        <div>
+          <p class="eyebrow" id="modalCategory"></p>
+          <h2 id="modalTitle"></h2>
+          <p class="muted">This is a real dish by Chef Evgenii and a visual reference for an on-site private chef booking. Final availability and menu are confirmed after consultation.</p>
+        </div>
+        <button class="button full" type="button" id="askAboutDish">Ask about this dish</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/menu/menu-items.js"></script>
   <script>
     (() => {
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const progress = document.querySelector('.scroll-progress');
-      const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
-      const sections = [...document.querySelectorAll('main > header, main > section[id]')];
-      const revealTargets = [
-        ...document.querySelectorAll('section .section-head, .card, .benefit-list li, .price-box, .story-photo, .story, .step, .gallery img, .quote, .area-list span, .contact-card, .cta h2, .cta p, .cta .hero-actions')
-      ];
+      const PHONE = "17868200965";
+      const EMAIL = "evgenii31599@gmail.com";
+      const PAYMENT_LINKS = {
+        consultation: "",
+        deposit: "",
+        weekly: ""
+      };
 
-      revealTargets.forEach((el) => {
-        el.classList.add('reveal');
-        const localIndex = [...(el.parentElement?.children || [])].indexOf(el);
-        el.style.setProperty('--delay', `${Math.max(0, localIndex) * 45}ms`);
+      const progress = document.querySelector(".progress");
+      const navLinksWrap = document.getElementById("navLinks");
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = [...document.querySelectorAll(".nav-links a[href^='#']")];
+      const sections = [...document.querySelectorAll("main section[id], header[id]")];
+
+      menuToggle?.addEventListener("click", () => {
+        const open = navLinksWrap.classList.toggle("is-open");
+        menuToggle.setAttribute("aria-expanded", String(open));
+        document.body.classList.toggle("menu-open", open);
       });
 
-      if (!reduceMotion) {
-        const revealObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
-        revealTargets.forEach((el) => revealObserver.observe(el));
-      } else {
-        revealTargets.forEach((el) => el.classList.add('is-visible'));
-      }
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinksWrap.classList.remove("is-open");
+          menuToggle?.setAttribute("aria-expanded", "false");
+          document.body.classList.remove("menu-open");
+        });
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("is-visible");
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+
+      document.querySelectorAll(".reveal, .card, .step, .payment-option, .menu-card").forEach((el, i) => {
+        el.classList.add("reveal");
+        el.style.setProperty("--delay", `${Math.min(i % 8, 7) * 35}ms`);
+        observer.observe(el);
+      });
 
       const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const id = entry.target.id;
-          navLinks.forEach((link) => link.classList.toggle('active', id && link.getAttribute('href') === `#${id}`));
+          navLinks.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${id}`));
         });
-      }, { threshold: 0.42 });
+      }, { threshold: 0.38 });
       sections.forEach((section) => sectionObserver.observe(section));
 
       let ticking = false;
       const updateProgress = () => {
-        const scrollY = window.scrollY || window.pageYOffset;
         const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        progress.style.transform = `scaleX(${maxScroll > 0 ? scrollY / maxScroll : 0})`;
+        const ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+        progress.style.transform = `scaleX(${ratio})`;
         ticking = false;
       };
-
-      const onScroll = () => {
+      window.addEventListener("scroll", () => {
         if (ticking) return;
         ticking = true;
         requestAnimationFrame(updateProgress);
+      }, { passive: true });
+      window.addEventListener("resize", updateProgress);
+      updateProgress();
+
+      const menuItems = Array.isArray(window.MENU_ITEMS) ? window.MENU_ITEMS : [];
+      const menuGrid = document.getElementById("menuGrid");
+      const menuFilters = document.getElementById("menuFilters");
+      const menuCount = document.getElementById("menuCount");
+      const loadMore = document.getElementById("loadMore");
+      const modal = document.getElementById("menuModal");
+      const modalImage = document.getElementById("modalImage");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalCategory = document.getElementById("modalCategory");
+      const modalClose = document.getElementById("modalClose");
+      const askAboutDish = document.getElementById("askAboutDish");
+
+      let activeCategory = "All";
+      let visibleCount = 24;
+      let activeDish = null;
+      const categories = ["All", ...new Set(menuItems.map((item) => item.category))];
+
+      const renderFilters = () => {
+        menuFilters.innerHTML = "";
+        categories.forEach((cat) => {
+          const btn = document.createElement("button");
+          btn.className = "pill";
+          btn.type = "button";
+          btn.textContent = cat;
+          btn.setAttribute("aria-pressed", String(cat === activeCategory));
+          btn.addEventListener("click", () => {
+            activeCategory = cat;
+            visibleCount = 24;
+            renderFilters();
+            renderMenu();
+          });
+          menuFilters.appendChild(btn);
+        });
       };
 
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onScroll);
-      updateProgress();
+      const filteredItems = () => activeCategory === "All" ? menuItems : menuItems.filter((item) => item.category === activeCategory);
+
+      const openDish = (item) => {
+        activeDish = item;
+        modalImage.src = item.src;
+        modalImage.alt = item.alt;
+        modalTitle.textContent = item.title;
+        modalCategory.textContent = item.category;
+        modal.classList.add("is-open");
+        document.body.classList.add("menu-open");
+      };
+
+      const closeDish = () => {
+        modal.classList.remove("is-open");
+        document.body.classList.remove("menu-open");
+      };
+
+      const renderMenu = () => {
+        const items = filteredItems();
+        const shown = items.slice(0, visibleCount);
+        menuGrid.innerHTML = "";
+        shown.forEach((item) => {
+          const card = document.createElement("button");
+          card.className = "menu-card";
+          card.type = "button";
+          card.innerHTML = `
+            <img loading="lazy" decoding="async" src="${item.src}" alt="${item.alt}">
+            <div><b>${item.title}</b><span>${item.category}</span></div>
+          `;
+          card.addEventListener("click", () => openDish(item));
+          menuGrid.appendChild(card);
+          observer.observe(card);
+        });
+        menuCount.textContent = `${shown.length} of ${items.length} photos shown`;
+        loadMore.style.display = shown.length < items.length ? "inline-flex" : "none";
+      };
+
+      loadMore?.addEventListener("click", () => {
+        visibleCount += 24;
+        renderMenu();
+      });
+
+      modalClose?.addEventListener("click", closeDish);
+      modal?.addEventListener("click", (event) => {
+        if (event.target === modal) closeDish();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modal.classList.contains("is-open")) closeDish();
+      });
+
+      askAboutDish?.addEventListener("click", () => {
+        if (!activeDish) return;
+        const text = `Hi Chef Evgenii, I am interested in an on-site private chef booking and I like this dish: ${activeDish.title} (${activeDish.category}). Please tell me about availability and pricing.`;
+        window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`, "_blank", "noreferrer");
+      });
+
+      renderFilters();
+      renderMenu();
+
+      const form = document.getElementById("bookingForm");
+      document.querySelectorAll("[data-service-choice]").forEach((link) => {
+        link.addEventListener("click", () => {
+          const serviceSelect = form?.querySelector('select[name="service"]');
+          if (serviceSelect) serviceSelect.value = link.dataset.serviceChoice;
+        });
+      });
+      const formMessage = () => {
+        const data = new FormData(form);
+        return [
+          "Hi Chef Evgenii, I would like a private chef quote.",
+          "",
+          `Service: ${data.get("service") || ""}`,
+          `Name: ${data.get("name") || ""}`,
+          `Phone: ${data.get("phone") || ""}`,
+          `Email: ${data.get("email") || ""}`,
+          `Location: ${data.get("location") || ""}`,
+          `Household size: ${data.get("people") || ""}`,
+          `Meals: ${data.get("meals") || ""}`,
+          `Budget: ${data.get("budget") || ""}`,
+          `Preferred contact: ${data.get("contact") || ""}`,
+          `Notes: ${data.get("notes") || ""}`
+        ].join("\\n");
+      };
+
+      form?.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(formMessage())}`, "_blank", "noreferrer");
+      });
+
+      document.getElementById("emailRequest")?.addEventListener("click", () => {
+        if (!form.reportValidity()) return;
+        const subject = "Private chef service quote";
+        window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(formMessage())}`;
+      });
+
+      document.querySelectorAll(".package-choose").forEach((button) => {
+        button.addEventListener("click", () => {
+          const plan = button.dataset.package;
+          const text = `Hi Chef Evgenii, I am interested in the ${plan} plan. Please send details and next steps.`;
+          window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`, "_blank", "noreferrer");
+        });
+      });
+
+      document.querySelectorAll(".payment-request").forEach((button) => {
+        button.addEventListener("click", () => {
+          const payment = button.dataset.payment;
+          const lower = payment.toLowerCase();
+          const link = lower.includes("consultation") ? PAYMENT_LINKS.consultation : lower.includes("deposit") ? PAYMENT_LINKS.deposit : PAYMENT_LINKS.weekly;
+          if (link) {
+            window.open(link, "_blank", "noreferrer");
+            return;
+          }
+          const text = `Hi Chef Evgenii, please send me a secure payment link for: ${payment}.`;
+          window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`, "_blank", "noreferrer");
+        });
+      });
     })();
   </script>
 </body>
