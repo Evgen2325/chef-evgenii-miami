@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chef Evgenii Miami | Private Chef Meals</title>
+  <meta name="description" content="Personal chef in Miami offering custom weekly menus, restaurant-level meals, and three deliveries per week for private homes." />
+  <style>
+    :root {
+      --black: #080705;
+      --coal: #11100d;
+      --panel: #1b1812;
+      --panel-soft: #242016;
+      --gold: #c7a35a;
+      --gold-soft: #e4c982;
+      --cream: #f7efdf;
+      --muted: #b8ad99;
+      --line: rgba(228, 201, 130, .22);
+      --white: #ffffff;
+      --shadow: 0 22px 70px rgba(0, 0, 0, .36);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--cream);
+      background: var(--black);
+      line-height: 1.55;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 80;
+      width: 100%;
+      height: 3px;
+      transform-origin: left center;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, #8d6a2f, var(--gold-soft), #fff1b8);
+      pointer-events: none;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 15px clamp(18px, 5vw, 70px);
+      background: rgba(8, 7, 5, .91);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold-soft);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover,
+    .nav a.active:not(.button),
+    .contact-link:hover { color: var(--gold-soft); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border: 1px solid var(--gold);
+      border-radius: 5px;
+      background: var(--gold);
+      color: #100d07;
+      font-weight: 800;
+      font-size: 14px;
+      text-align: center;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      background: var(--gold-soft);
+      border-color: var(--gold-soft);
+    }
+
+    .button.ghost {
+      background: transparent;
+      color: var(--gold-soft);
+    }
+
+    .button.ghost:hover { background: rgba(228, 201, 130, .08); }
+
+    .contact-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .contact-link {
+      border: 1px solid rgba(228, 201, 130, .18);
+      border-radius: 999px;
+      padding: 8px 11px;
+      background: rgba(255, 255, 255, .03);
+    }
+
+    .hero {
+      min-height: calc(100vh - 76px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(340px, .78fr);
+      align-items: stretch;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(34px, 6vw, 78px) clamp(22px, 6vw, 84px);
+      background: radial-gradient(circle at 20% 0%, rgba(199, 163, 90, .15), transparent 35%), var(--black);
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--gold-soft);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 840px;
+      font-size: clamp(38px, 5.1vw, 64px);
+      line-height: 1.03;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4.4vw, 54px);
+      line-height: 1.06;
+    }
+
+    h3 {
+      color: var(--gold-soft);
+      font-size: 24px;
+      line-height: 1.16;
+    }
+
+    .lead {
+      max-width: 700px;
+      margin: 22px 0 0;
+      color: var(--cream);
+      font-size: clamp(18px, 2.1vw, 22px);
+    }
+
+    .plain-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 24px 0 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .plain-list li::before {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      vertical-align: 2px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .hero-actions .button {
+      min-height: 54px;
+      min-width: 210px;
+      font-size: 15px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      max-width: 760px;
+      margin-top: 38px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .stat {
+      min-height: 106px;
+      padding: 20px;
+      background: rgba(17, 16, 13, .95);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--gold-soft);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 27px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-media {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      background: var(--panel);
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.94) contrast(1.05);
+      transform: scale(1.01);
+    }
+
+    .media-label {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      background: rgba(8, 7, 5, .75);
+      backdrop-filter: blur(12px);
+    }
+
+    .media-label b {
+      display: block;
+      color: var(--gold-soft);
+    }
+
+    .media-label span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(60px, 8vw, 104px) clamp(20px, 5vw, 70px);
+    }
+
+    .section-head {
+      max-width: 780px;
+      margin-bottom: 34px;
+    }
+
+    .section-head p:not(.eyebrow) {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .dark-band {
+      background: #0d0c09;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .grid-3,
+    .grid-4,
+    .steps,
+    .contact-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .steps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .contact-grid { grid-template-columns: 1.05fr .95fr; align-items: start; }
+
+    .card,
+    .step,
+    .price-box,
+    .contact-card,
+    .quote {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: linear-gradient(180deg, rgba(36, 32, 22, .98), rgba(13, 12, 9, .98));
+      box-shadow: var(--shadow);
+    }
+
+    .card,
+    .step,
+    .quote {
+      min-height: 220px;
+      padding: 25px;
+    }
+
+    .card p,
+    .step p,
+    .price-box p,
+    .story p,
+    .quote p,
+    .contact-card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+
+    .benefit-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .benefit-list li {
+      min-height: 58px;
+      padding: 16px 16px 16px 42px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, .03);
+      color: var(--cream);
+      position: relative;
+    }
+
+    .benefit-list li::before {
+      content: "";
+      position: absolute;
+      left: 17px;
+      top: 23px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .price-box {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 28px;
+      align-items: center;
+      padding: clamp(24px, 4vw, 38px);
+    }
+
+    .price-main {
+      color: var(--cream);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1;
+    }
+
+    .price-main span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .price-box ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .price-box li {
+      padding: 10px 0;
+      border-top: 1px solid rgba(228, 201, 130, .14);
+    }
+
+    .story-wrap {
+      display: grid;
+      grid-template-columns: minmax(300px, .82fr) minmax(0, 1fr);
+      gap: clamp(28px, 5vw, 72px);
+      align-items: center;
+    }
+
+    .story-photo {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .story-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .proofs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .proofs span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 12px;
+      color: var(--gold-soft);
+      background: rgba(199, 163, 90, .08);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .step {
+      min-height: 210px;
+      padding: 22px;
+    }
+
+    .step span {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--gold-soft);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border: 1px solid rgba(228, 201, 130, .18);
+      border-radius: 6px;
+      background: var(--panel);
+    }
+
+    .area-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .area-list span {
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      padding: 12px 14px;
+      color: var(--cream);
+      background: rgba(255, 255, 255, .03);
+    }
+
+    .quote {
+      min-height: 180px;
+    }
+
+    .quote strong {
+      display: block;
+      color: var(--gold-soft);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 25px;
+    }
+
+    .contact-card {
+      padding: 28px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .cta {
+      text-align: center;
+      background: radial-gradient(circle at 50% 0%, rgba(199, 163, 90, .18), transparent 34%), #0a0907;
+      border-top: 1px solid var(--line);
+    }
+
+    .cta h2 {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .cta p {
+      max-width: 680px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .cta .hero-actions {
+      justify-content: center;
+    }
+
+    footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px clamp(20px, 5vw, 70px);
+      border-top: 1px solid var(--line);
+      background: var(--black);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero-copy > *,
+    .media-label {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: heroRise .72s cubic-bezier(.2, .8, .2, 1) forwards;
+    }
+
+    .hero-copy .eyebrow { animation-delay: .06s; }
+    .hero-copy h1 { animation-delay: .14s; }
+    .hero-copy .lead { animation-delay: .22s; }
+    .hero-copy .plain-list { animation-delay: .30s; }
+    .hero-actions { animation-delay: .38s; }
+    .hero-stats { animation-delay: .46s; }
+    .media-label { animation-delay: .52s; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity .65s cubic-bezier(.2, .8, .2, 1), transform .65s cubic-bezier(.2, .8, .2, 1);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card,
+    .step,
+    .quote,
+    .gallery img,
+    .contact-link {
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .card:hover,
+    .step:hover,
+    .quote:hover {
+      transform: translateY(-4px);
+      border-color: rgba(228, 201, 130, .42);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.018);
+      border-color: rgba(228, 201, 130, .50);
+    }
+
+    @keyframes heroRise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1100px) {
+      .grid-4,
+      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .story-wrap,
+      .price-box,
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero-media {
+        min-height: 500px;
+        order: -1;
+      }
+      .grid-3 { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .nav {
+        align-items: flex-start;
+      }
+      .contact-strip {
+        display: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links a:not(.button) { display: none; }
+      .nav-links .button { min-height: 42px; padding: 0 14px; }
+      .brand { font-size: 19px; }
+      .hero {
+        min-height: auto;
+      }
+      .hero-copy {
+        padding-top: 34px;
+      }
+      .hero-media {
+        min-height: 390px;
+      }
+      .hero-actions .button,
+      .button {
+        width: 100%;
+        min-width: 0;
+      }
+      .hero-stats,
+      .benefit-list,
+      .grid-4,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+      .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .card,
+      .step,
+      .quote,
+      .contact-card {
+        min-height: auto;
+        padding: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal,
+      .hero-copy > *,
+      .media-label {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <nav class="nav">
+    <a class="brand" href="#top">Chef Evgenii Miami</a>
+    <div class="nav-links">
+      <a href="#benefits">What you get</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#story">About</a>
+      <a href="#contact">Contact</a>
+      <a class="button" href="tel:+17868200965">Book consultation</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Personal chef in Miami</p>
+        <h1>Private chef meals for your home in Miami.</h1>
+        <p class="lead">I create a custom weekly menu, cook restaurant-level dishes, and deliver prepared meals to your home three times per week.</p>
+        <ul class="plain-list">
+          <li>Individual menu for your family, diet, schedule, and preferences.</li>
+          <li>Premium ingredients, chef preparation, and clean packaging.</li>
+          <li>Service for Miami, Broward, and Boca Raton households.</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="button" href="tel:+17868200965">Book consultation</a>
+          <a class="button ghost" href="#menu">View menu style</a>
+        </div>
+        <div class="hero-stats" aria-label="Chef credentials">
+          <div class="stat"><strong>20+</strong><span>years in professional kitchens and private service</span></div>
+          <div class="stat"><strong>3x</strong><span>weekly delivery rhythm available for private homes</span></div>
+          <div class="stat"><strong>Miami</strong><span>personal chef service for families and busy households</span></div>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="assets/chef-evgenii.jpg" alt="Chef Evgenii in chef jacket" />
+        <div class="media-label">
+          <b>Chef Evgenii</b>
+          <span>Personal chef in Miami. Custom weekly meals for private homes.</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="dark-band" aria-label="Quick contact options">
+      <div class="contact-strip">
+        <span>Contact:</span>
+        <a class="contact-link" href="https://wa.me/17868200965" target="_blank" rel="noreferrer">WhatsApp</a>
+        <a class="contact-link" href="tel:+17868200965">+1 786 820 0965</a>
+        <a class="contact-link" href="mailto:evgenii31599@gmail.com">evgenii31599@gmail.com</a>
+        <a class="contact-link" href="https://www.instagram.com/miami_cooking_chef/" target="_blank" rel="noreferrer">@miami_cooking_chef</a>
+      </div>
+    </section>
+
+    <section id="benefits">
+      <div class="section-head">
+        <p class="eyebrow">What the client gets</p>
+        <h2>A private chef system for your week.</h2>
+        <p>You do not need to plan meals, shop, cook, or rely on restaurants every night. The food is prepared for your household and ready to reheat when needed.</p>
+      </div>
+      <ul class="benefit-list">
+        <li>Individual weekly menu</li>
+        <li>Grocery sourcing and product selection</li>
+        <li>Restaurant-level cooking</li>
+        <li>Delivery three times per week</li>
+        <li>Premium packaging</li>
+        <li>Meals ready to reheat</li>
+        <li>Miami, Broward, and Boca Raton service area</li>
+        <li>Preference tracking after each week</li>
+      </ul>
+    </section>
+
+    <section id="menu" class="dark-band">
+      <div class="section-head">
+        <p class="eyebrow">Menu style</p>
+        <h2>Custom food for the way your family actually eats.</h2>
+        <p>The menu is built after a short consultation. It can be clean and healthy, high-protein, Mediterranean, family-style, or more elevated for dinner guests.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Proteins and seafood</h3>
+          <p>Fish, seafood, beef, chicken, lamb, turkey, sauces, and sides prepared so they travel and reheat well.</p>
+        </article>
+        <article class="card">
+          <h3>Daily meals</h3>
+          <p>Lunches, dinners, salads, soups, vegetables, grains, sauces, and meals that keep the week organized.</p>
+        </article>
+        <article class="card">
+          <h3>Private preferences</h3>
+          <p>Allergies, kids, dislikes, low-carb, wellness-focused meals, comfort food, guest nights, and special requests.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="section-head">
+        <p class="eyebrow">Pricing</p>
+        <h2>Starting from $850/week</h2>
+        <p>A typical plan includes freshly prepared lunches and dinners for five days per week.</p>
+      </div>
+      <div class="price-box">
+        <div class="price-main">
+          From $850 / week
+          <span>Every client is different, so each service is tailored to your needs.</span>
+        </div>
+        <div>
+          <h3>Final pricing depends on:</h3>
+          <ul>
+            <li>Number of people</li>
+            <li>Meal volume and calorie requirements</li>
+            <li>Menu customization and dietary preferences</li>
+            <li>Ingredient selection</li>
+            <li>Delivery schedule</li>
+          </ul>
+          <p class="pricing-note">Contact us for a personalized quote designed specifically for your household.</p>
+          <div class="hero-actions">
+            <a class="button" href="mailto:evgenii31599@gmail.com?subject=Private%20chef%20pricing%20request&body=Hi%20Chef%20Evgenii%2C%20I%20would%20like%20a%20personalized%20quote%20for%20weekly%20private%20chef%20meals.%0A%0AFamily%20size%3A%0ALocation%3A%0AMeal%20schedule%3A%0AFood%20preferences%3A">Get my personalized quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="story" class="dark-band">
+      <div class="story-wrap">
+        <div class="story-photo">
+          <img src="assets/chef-evgenii.jpg" alt="Chef Evgenii portrait" />
+        </div>
+        <div class="story">
+          <p class="eyebrow">About Chef Evgenii</p>
+          <h2>A professional chef you can trust inside your family routine.</h2>
+          <p>My name is Evgenii. I started cooking professionally in 2007 and built my career from the bottom up.</p>
+          <p>I worked in high-level restaurants and five-star hotel environments in Saint Petersburg, including Four Seasons, Marriott, Hilton, Hampton, and Kempinski-level kitchens. I also worked with a Michelin-level chef during my time at Four Seasons.</p>
+          <p>Since moving to Miami, I have worked as a personal chef for a private family. That experience shaped this service: consistent food, clean communication, privacy, timing, and attention to each household's preferences.</p>
+          <div class="proofs">
+            <span>20+ years of experience</span>
+            <span>Michelin-level restaurant exposure</span>
+            <span>Five-star hotel background</span>
+            <span>Personal chef in Miami</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Simple for you. Precise behind the scenes.</h2>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <span>Step 1</span>
+          <h3>Free consultation</h3>
+          <p>We discuss your family, schedule, food preferences, allergies, and location.</p>
+        </article>
+        <article class="step">
+          <span>Step 2</span>
+          <h3>Menu planning</h3>
+          <p>I create a weekly menu that fits your household and level of service.</p>
+        </article>
+        <article class="step">
+          <span>Step 3</span>
+          <h3>Grocery sourcing</h3>
+          <p>Ingredients are selected for freshness, quality, and the menu we agreed on.</p>
+        </article>
+        <article class="step">
+          <span>Step 4</span>
+          <h3>Cooking and delivery</h3>
+          <p>Meals are prepared, packed, labeled, and delivered to your home.</p>
+        </article>
+        <article class="step">
+          <span>Step 5</span>
+          <h3>You enjoy the meals</h3>
+          <p>Your food is ready to reheat. Feedback improves the next menu.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="visuals" class="dark-band">
+      <div class="section-head">
+        <p class="eyebrow">Food examples</p>
+        <h2>Visual examples of the current menu direction.</h2>
+        <p>Photo selection will be updated separately with more real dishes and process shots.</p>
+      </div>
+      <div class="gallery" aria-label="Food gallery">
+        <img src="assets/luxury-food/luxury-lobster.png" alt="Prepared lobster dish" />
+        <img src="assets/luxury-food/luxury-beef.png" alt="Prepared beef dish" />
+        <img src="assets/luxury-food/luxury-scallops.png" alt="Prepared scallop dish" />
+      </div>
+    </section>
+
+    <section id="trust">
+      <div class="section-head">
+        <p class="eyebrow">Why clients choose this</p>
+        <h2>The service solves four real problems.</h2>
+      </div>
+      <div class="grid-4">
+        <article class="quote">
+          <strong>No daily food stress</strong>
+          <p>Your family has prepared meals ready without deciding what to order every night.</p>
+        </article>
+        <article class="quote">
+          <strong>Private standard</strong>
+          <p>The service is built around your home, your preferences, and your weekly rhythm.</p>
+        </article>
+        <article class="quote">
+          <strong>Better than takeout</strong>
+          <p>Meals are planned as a weekly system, not random restaurant orders.</p>
+        </article>
+        <article class="quote">
+          <strong>Consistency</strong>
+          <p>The menu improves as I learn what your household likes and does not like.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="area" class="dark-band">
+      <div class="section-head">
+        <p class="eyebrow">Service area</p>
+        <h2>Serving private homes in South Florida.</h2>
+        <p>Best fit: families, executives, seasonal residents, busy households, and private homes that want reliable chef-prepared meals.</p>
+        <div class="area-list">
+          <span>Miami</span>
+          <span>Miami Beach</span>
+          <span>Brickell</span>
+          <span>Coral Gables</span>
+          <span>Coconut Grove</span>
+          <span>Key Biscayne</span>
+          <span>Aventura</span>
+          <span>Broward</span>
+          <span>Boca Raton</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-grid">
+        <div class="section-head" style="margin-bottom:0">
+          <p class="eyebrow">Contact</p>
+          <h2>Book a short consultation.</h2>
+          <p>Send your household size, location, food preferences, and ideal delivery schedule. I will reply with the next steps and an estimated weekly range.</p>
+        </div>
+        <div class="contact-card">
+          <h3>Chef Evgenii Miami</h3>
+          <p>Personal chef meals for Miami, Broward, and Boca Raton homes.</p>
+          <div class="contact-buttons">
+            <a class="button" href="mailto:evgenii31599@gmail.com?subject=Private%20chef%20consultation%20in%20Miami&body=Hi%20Chef%20Evgenii%2C%20I%20would%20like%20to%20book%20a%20consultation.%0A%0AFamily%20size%3A%0ALocation%3A%0AFood%20preferences%3A%0AIdeal%20delivery%20schedule%3A">Email</a>
+            <a class="button ghost" href="https://wa.me/17868200965" target="_blank" rel="noreferrer">WhatsApp</a>
+            <a class="button ghost" href="tel:+17868200965">Call</a>
+            <a class="button ghost" href="https://www.instagram.com/miami_cooking_chef/" target="_blank" rel="noreferrer">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Ready to make your weekly food simple?</h2>
+      <p>Book a consultation and I will help define the right menu, delivery rhythm, and weekly plan for your home.</p>
+      <div class="hero-actions">
+        <a class="button" href="tel:+17868200965">Book consultation</a>
+        <a class="button ghost" href="#menu">View menu style</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Chef Evgenii Miami</span>
+    <span>Private chef meals for Miami homes</span>
+    <a href="tel:+17868200965">+1 786 820 0965</a>
+    <a href="https://wa.me/17868200965" target="_blank" rel="noreferrer">WhatsApp</a>
+    <a href="mailto:evgenii31599@gmail.com">evgenii31599@gmail.com</a>
+  </footer>
+
+  <script>
+    (() => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const progress = document.querySelector('.scroll-progress');
+      const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+      const sections = [...document.querySelectorAll('main > header, main > section[id]')];
+      const revealTargets = [
+        ...document.querySelectorAll('section .section-head, .card, .benefit-list li, .price-box, .story-photo, .story, .step, .gallery img, .quote, .area-list span, .contact-card, .cta h2, .cta p, .cta .hero-actions')
+      ];
+
+      revealTargets.forEach((el) => {
+        el.classList.add('reveal');
+        const localIndex = [...(el.parentElement?.children || [])].indexOf(el);
+        el.style.setProperty('--delay', `${Math.max(0, localIndex) * 45}ms`);
+      });
+
+      if (!reduceMotion) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+        revealTargets.forEach((el) => revealObserver.observe(el));
+      } else {
+        revealTargets.forEach((el) => el.classList.add('is-visible'));
+      }
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.id;
+          navLinks.forEach((link) => link.classList.toggle('active', id && link.getAttribute('href') === `#${id}`));
+        });
+      }, { threshold: 0.42 });
+      sections.forEach((section) => sectionObserver.observe(section));
+
+      let ticking = false;
+      const updateProgress = () => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.transform = `scaleX(${maxScroll > 0 ? scrollY / maxScroll : 0})`;
+        ticking = false;
+      };
+
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(updateProgress);
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      updateProgress();
+    })();
+  </script>
+</body>
+</html>
