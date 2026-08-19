@@ -209,12 +209,15 @@
     .hero {
       position: relative;
       min-height: calc(100svh - 72px);
-      display: flex;
-      align-items: flex-end;
-      padding: clamp(90px, 11vw, 150px) clamp(18px, 6vw, 84px) clamp(42px, 8vw, 86px);
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(440px, 1.08fr);
+      align-items: center;
+      gap: clamp(28px, 4vw, 72px);
+      padding: clamp(42px, 5vw, 68px) clamp(18px, 6vw, 84px);
       border-bottom: 1px solid var(--line);
       overflow: hidden;
       isolation: isolate;
+      background: var(--black);
     }
 
     .hero::before {
@@ -223,9 +226,8 @@
       inset: 0;
       z-index: -2;
       background:
-        linear-gradient(90deg, rgba(9, 8, 6, .96) 0%, rgba(9, 8, 6, .82) 42%, rgba(9, 8, 6, .26) 100%),
-        linear-gradient(0deg, rgba(9, 8, 6, .88), rgba(9, 8, 6, .1) 54%, rgba(9, 8, 6, .72)),
-        url("assets/chef-evgenii.jpg") center right / cover no-repeat;
+        radial-gradient(circle at 76% 42%, rgba(211, 173, 91, .1), transparent 34%),
+        linear-gradient(115deg, #090806 0%, #0d0c09 56%, #15120d 100%);
     }
 
     .hero::after {
@@ -238,7 +240,47 @@
     }
 
     .hero-inner {
-      width: min(760px, 100%);
+      position: relative;
+      z-index: 2;
+      grid-column: 1;
+      grid-row: 1;
+      width: min(680px, 100%);
+    }
+
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+      grid-column: 2;
+      grid-row: 1;
+      align-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: min(700px, calc(100svh - 170px));
+      min-width: 0;
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 8% 2%;
+      z-index: -1;
+      border: 1px solid rgba(239, 207, 131, .14);
+      box-shadow: 0 34px 90px rgba(0, 0, 0, .38);
+    }
+
+    .hero-visual img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-height: 760px;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .hero h1 {
+      max-width: 650px;
+      font-size: clamp(48px, 5vw, 72px);
     }
 
     .eyebrow {
@@ -837,6 +879,7 @@
 
       .nav-links.is-open { display: flex; }
       .menu-toggle { display: inline-flex; align-items: center; }
+      .hero { grid-template-columns: minmax(0, .9fr) minmax(360px, 1.1fr); }
       .grid.three, .grid.two, .pricing-wrap, .forms-layout, .process-note { grid-template-columns: 1fr; }
       .grid.four, .grid.five, .trust-strip, .payment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .dish-catalog { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -846,15 +889,38 @@
 
     @media (max-width: 660px) {
       .hero {
+        grid-template-columns: 1fr;
+        gap: 18px;
         min-height: auto;
-        align-items: flex-end;
-        padding-top: 220px;
+        align-items: start;
+        padding: 0 18px 46px;
       }
 
-      .hero::before {
-        background:
-          linear-gradient(0deg, rgba(9, 8, 6, .98) 0%, rgba(9, 8, 6, .84) 52%, rgba(9, 8, 6, .18) 100%),
-          url("assets/chef-evgenii.jpg") top center / cover no-repeat;
+      .hero-visual {
+        grid-column: 1;
+        grid-row: 1;
+        width: calc(100% + 36px);
+        height: min(100vw, 500px);
+        margin: 0 -18px;
+        background: #0d0c09;
+      }
+
+      .hero-visual::after {
+        inset: auto 18px 0;
+        height: 1px;
+        border: 0;
+        background: var(--line);
+        box-shadow: none;
+      }
+
+      .hero-visual img {
+        max-height: none;
+        object-position: center top;
+      }
+
+      .hero-inner {
+        grid-column: 1;
+        grid-row: 2;
       }
 
       .actions .button,
@@ -906,6 +972,9 @@
   </nav>
 
   <header class="hero" id="top">
+    <div class="hero-visual" aria-hidden="true">
+      <img src="assets/chef-evgenii.jpg" alt="" width="1280" height="1280" fetchpriority="high" />
+    </div>
     <div class="hero-inner reveal">
       <p class="eyebrow">Miami | Broward | Boca Raton</p>
       <h1>Private chef service for your home in South Florida.</h1>
